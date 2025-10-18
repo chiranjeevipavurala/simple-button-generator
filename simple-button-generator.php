@@ -59,6 +59,21 @@ class SimpleButtonGenerator {
             <h1>Simple Button Generator</h1>
             <p>Generate customizable buttons that your customers can download and use on their websites.</p>
             
+            <!-- Floating Preview Panel -->
+            <div id="floating-preview" class="floating-preview-panel">
+                <div class="preview-header">
+                    <h3>Live Preview</h3>
+                    <button type="button" id="toggle-preview" class="toggle-preview-btn">−</button>
+                </div>
+                <div class="preview-content">
+                    <div id="floating-preview-container">
+                        <div class="preview-placeholder">
+                            <p>Enter button title and action to see preview</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="notice notice-info">
                 <p><strong>💡 Pro Tip:</strong> Use this tool to create call-to-action buttons, download links, or any custom buttons for your websites. The generated HTML files work on any website, not just WordPress!</p>
             </div>

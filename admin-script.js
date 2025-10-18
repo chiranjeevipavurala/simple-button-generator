@@ -322,6 +322,63 @@ jQuery(document).ready(function($) {
         if ($('#button-title').val() && $('#button-action').val()) {
             updateLivePreview();
         }
+
+        // Floating preview functionality
+        $('#toggle-preview').on('click', function() {
+            var $panel = $('#floating-preview');
+            var $btn = $(this);
+            
+            if ($panel.hasClass('collapsed')) {
+                $panel.removeClass('collapsed');
+                $btn.text('−');
+            } else {
+                $panel.addClass('collapsed');
+                $btn.text('+');
+            }
+        });
+
+        // Make floating preview draggable
+        var isDragging = false;
+        var currentX;
+        var currentY;
+        var initialX;
+        var initialY;
+        var xOffset = 0;
+        var yOffset = 0;
+
+        $('.preview-header').on('mousedown', function(e) {
+            if (e.target.tagName === 'BUTTON') return; // Don't drag when clicking toggle button
+            
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+
+            if (e.target === this || $(e.target).closest('.preview-header').length) {
+                isDragging = true;
+                $('.preview-header').css('cursor', 'grabbing');
+            }
+        });
+
+        $(document).on('mousemove', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                $('#floating-preview').css({
+                    'transform': 'translate(' + currentX + 'px, ' + currentY + 'px)',
+                    'top': '50%',
+                    'right': 'auto'
+                });
+            }
+        });
+
+        $(document).on('mouseup', function() {
+            isDragging = false;
+            $('.preview-header').css('cursor', 'move');
+        });
     
     // Show/hide tracking event field based on tracking selection
     $('#button-tracking').on('change', function() {
@@ -445,9 +502,14 @@ jQuery(document).ready(function($) {
         var tempStyle = $('<style>').text(finalCss);
         var previewHtml = '<a href="' + action + '" class="simple-button">' + title + '</a>';
         
-        // Update preview
-        $('#preview-container').html(tempStyle).append(previewHtml);
-        $('#button-preview').show();
+        // Update floating preview
+        $('#floating-preview-container').html(tempStyle.clone()).append(previewHtml);
+        
+        // Update original preview (if it exists)
+        if ($('#preview-container').length) {
+            $('#preview-container').html(tempStyle).append(previewHtml);
+            $('#button-preview').show();
+        }
     }
     
     function getSizeCss(size) {

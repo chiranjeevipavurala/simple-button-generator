@@ -326,3 +326,120 @@
 #apply-custom-border-color {
     vertical-align: middle;
 }
+
+/* Floating Preview Panel */
+.floating-preview-panel {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-preview-panel.collapsed {
+    height: 50px;
+    overflow: hidden;
+}
+
+.floating-preview-panel.collapsed .preview-content {
+    display: none;
+}
+
+.preview-header {
+    background: #f1f1f1;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ccd0d4;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.preview-header h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #23282d;
+    font-weight: 600;
+}
+
+.toggle-preview-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.toggle-preview-btn:hover {
+    background: #ddd;
+    color: #333;
+}
+
+.preview-content {
+    padding: 20px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-placeholder {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.preview-placeholder p {
+    margin: 0;
+    font-size: 13px;
+}
+
+#floating-preview-container {
+    width: 100%;
+    text-align: center;
+}
+
+#floating-preview-container .simple-button {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .floating-preview-panel {
+        width: 250px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 782px) {
+    .floating-preview-panel {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        margin: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .wrap {
+        position: relative;
+    }
+}
