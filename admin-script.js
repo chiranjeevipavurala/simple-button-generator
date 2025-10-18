@@ -6,9 +6,21 @@ jQuery(document).ready(function($) {
             action: 'generate_button',
             nonce: buttonGenerator.nonce,
             button_title: $('#button-title').val(),
+            button_action_type: $('#button-action-type').val(),
             button_action: $('#button-action').val(),
+            button_javascript: $('#button-javascript').val(),
+            button_email: $('#button-email').val(),
+            button_phone: $('#button-phone').val(),
+            button_download: $('#button-download').val(),
+            button_form: $('#button-form').val(),
+            button_modal: $('#button-modal').val(),
+            button_scroll: $('#button-scroll').val(),
             button_size: $('#button-size').val(),
             button_color: $('#button-color').val(),
+            border_style: $('#border-style').val(),
+            border_width: $('#border-width').val(),
+            border_color: $('#border-color').val(),
+            border_radius: $('input[name="border_radius"]:checked').val(),
             button_tracking: $('#button-tracking').val(),
             tracking_event: $('#tracking-event').val(),
             custom_css: $('#custom-css').val()
@@ -78,6 +90,227 @@ jQuery(document).ready(function($) {
             alert('Unable to copy. Please select and copy manually.');
         }
     });
+    
+        // Show/hide action fields based on action type selection
+        $('#button-action-type').on('change', function() {
+            var actionType = $(this).val();
+            
+            // Hide all action rows first
+            $('#action-url-row, #action-javascript-row, #action-email-row, #action-phone-row, #action-download-row, #action-form-row, #action-modal-row, #action-scroll-row').hide();
+            
+            // Show the appropriate row based on selection
+            switch(actionType) {
+                case 'url':
+                    $('#action-url-row').show();
+                    break;
+                case 'javascript':
+                    $('#action-javascript-row').show();
+                    break;
+                case 'email':
+                    $('#action-email-row').show();
+                    break;
+                case 'phone':
+                    $('#action-phone-row').show();
+                    break;
+                case 'download':
+                    $('#action-download-row').show();
+                    break;
+                case 'form':
+                    $('#action-form-row').show();
+                    break;
+                case 'modal':
+                    $('#action-modal-row').show();
+                    break;
+                case 'scroll':
+                    $('#action-scroll-row').show();
+                    break;
+            }
+        });
+
+        // Color palette functionality
+        $('.color-swatch').on('click', function() {
+            var colorValue = $(this).data('color');
+            
+            // Remove selected class from all swatches
+            $('.color-swatch').removeClass('selected');
+            
+            // Add selected class to clicked swatch
+            $(this).addClass('selected');
+            
+            // Update the dropdown
+            $('#button-color').val(colorValue);
+            
+            // Update custom color picker if it's a custom color
+            if (colorValue.startsWith('gradient-')) {
+                // For gradients, set a representative color
+                var gradientColors = {
+                    'gradient-blue': '#667eea',
+                    'gradient-green': '#4facfe',
+                    'gradient-red': '#fa709a',
+                    'gradient-purple': '#a8edea',
+                    'gradient-sunset': '#ff9a9e'
+                };
+                $('#custom-color-picker').val(gradientColors[colorValue] || '#0073aa');
+            } else if (colorValue !== 'custom') {
+                // Map color names to hex values
+                var colorMap = {
+                    'blue': '#0073aa',
+                    'green': '#28a745',
+                    'red': '#dc3545',
+                    'orange': '#fd7e14',
+                    'purple': '#6f42c1',
+                    'navy': '#2c3e50',
+                    'teal': '#17a2b8',
+                    'gray': '#6c757d',
+                    'dark': '#343a40',
+                    'indigo': '#6610f2',
+                    'pink': '#e83e8c',
+                    'cyan': '#20c997',
+                    'yellow': '#ffc107',
+                    'lime': '#28a745',
+                    'coral': '#ff6b6b'
+                };
+                $('#custom-color-picker').val(colorMap[colorValue] || '#0073aa');
+            }
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Custom color picker functionality
+        $('#apply-custom-color').on('click', function() {
+            var customColor = $('#custom-color-picker').val();
+            
+            // Remove selected class from all swatches
+            $('.color-swatch').removeClass('selected');
+            
+            // Set dropdown to custom
+            $('#button-color').val('custom');
+            
+            // Update custom CSS field with the color
+            var currentCSS = $('#button-css').val();
+            var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
+            newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
+            newCSS += 'background-color: ' + customColor + ' !important;';
+            $('#button-css').val(newCSS);
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Initialize color palette selection
+        function initializeColorPalette() {
+            var currentColor = $('#button-color').val();
+            $('.color-swatch').removeClass('selected');
+            $('.color-swatch[data-color="' + currentColor + '"]').addClass('selected');
+        }
+
+        // Initialize on page load
+        initializeColorPalette();
+
+        // Border style change handler
+        $('#border-style').on('change', function() {
+            var borderStyle = $(this).val();
+            
+            if (borderStyle === 'none') {
+                $('#border-width-row, #border-color-row').hide();
+            } else {
+                $('#border-width-row, #border-color-row').show();
+            }
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Border color change handler
+        $('#border-color').on('change', function() {
+            var borderColor = $(this).val();
+            
+            if (borderColor === 'custom') {
+                $('#border-color-palette').show();
+            } else {
+                $('#border-color-palette').hide();
+            }
+            
+            // Update border color swatches
+            $('.border-swatch').removeClass('selected');
+            $('.border-swatch[data-color="' + borderColor + '"]').addClass('selected');
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Border color swatch click handler
+        $('.border-swatch').on('click', function() {
+            var colorValue = $(this).data('color');
+            
+            // Remove selected class from all border swatches
+            $('.border-swatch').removeClass('selected');
+            
+            // Add selected class to clicked swatch
+            $(this).addClass('selected');
+            
+            // Update the dropdown
+            $('#border-color').val(colorValue);
+            
+            // Hide palette if not custom
+            if (colorValue !== 'custom') {
+                $('#border-color-palette').hide();
+            }
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Custom border color picker functionality
+        $('#apply-custom-border-color').on('click', function() {
+            var customColor = $('#custom-border-color-picker').val();
+            
+            // Remove selected class from all border swatches
+            $('.border-swatch').removeClass('selected');
+            
+            // Set dropdown to custom
+            $('#border-color').val('custom');
+            
+            // Update custom CSS field with the border color
+            var currentCSS = $('#button-css').val();
+            var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
+            newCSS += 'border-color: ' + customColor + ' !important;';
+            $('#button-css').val(newCSS);
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Border radius change handler
+        $('input[name="border_radius"]').on('change', function() {
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Initialize border controls
+        function initializeBorderControls() {
+            var borderStyle = $('#border-style').val();
+            if (borderStyle === 'none') {
+                $('#border-width-row, #border-color-row').hide();
+            } else {
+                $('#border-width-row, #border-color-row').show();
+            }
+            
+            var borderColor = $('#border-color').val();
+            if (borderColor === 'custom') {
+                $('#border-color-palette').show();
+            } else {
+                $('#border-color-palette').hide();
+            }
+            
+            // Initialize border color swatch selection
+            $('.border-swatch').removeClass('selected');
+            $('.border-swatch[data-color="' + borderColor + '"]').addClass('selected');
+        }
+
+        // Initialize border controls on page load
+        initializeBorderControls();
     
     // Show/hide tracking event field based on tracking selection
     $('#button-tracking').on('change', function() {

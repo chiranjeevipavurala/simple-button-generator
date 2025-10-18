@@ -104,3 +104,241 @@
     outline: 2px solid #0073aa;
     outline-offset: 2px;
 }
+
+/* Color Palette Styles */
+.color-palette-grid {
+    margin: 10px 0;
+}
+
+.color-group {
+    margin-bottom: 15px;
+}
+
+.color-group h5 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.color-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    transition: all 0.2s ease;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+    border-color: #0073aa;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.color-swatch.selected {
+    border-color: #0073aa;
+    border-width: 3px;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+}
+
+.color-swatch.gradient {
+    background-size: cover;
+    background-position: center;
+}
+
+.color-swatch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.color-swatch.selected::after {
+    content: '✓';
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #0073aa;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.custom-color-section {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.custom-color-section h5 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#custom-color-picker {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#apply-custom-color {
+    vertical-align: middle;
+}
+
+/* Border Options Styles */
+.radius-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.radius-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: #f9f9f9;
+}
+
+.radius-option:hover {
+    border-color: #0073aa;
+    background: #f0f8ff;
+}
+
+.radius-option input[type="radio"] {
+    margin: 0 0 8px 0;
+}
+
+.radius-option input[type="radio"]:checked + .radius-preview {
+    background: #0073aa;
+    color: white;
+    transform: scale(1.1);
+}
+
+.radius-preview {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #e9ecef;
+    color: #495057;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 60px;
+    transition: all 0.2s ease;
+    border: 1px solid #dee2e6;
+}
+
+.radius-option:has(input:checked) {
+    border-color: #0073aa;
+    background: #e3f2fd;
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+}
+
+/* Border Color Swatches */
+.border-swatch {
+    position: relative;
+}
+
+.border-swatch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.border-swatch.selected::after {
+    content: '✓';
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #0073aa;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Border Color Palette */
+#border-color-palette {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+#border-color-palette h4 {
+    margin: 10px 0 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+#border-color-palette .color-group h5 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Custom Border Color Section */
+#border-color-palette .custom-color-section {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+#border-color-palette .custom-color-section h5 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#custom-border-color-picker {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#apply-custom-border-color {
+    vertical-align: middle;
+}
