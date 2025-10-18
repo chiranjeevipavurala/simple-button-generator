@@ -9,6 +9,8 @@ jQuery(document).ready(function($) {
             button_action: $('#button-action').val(),
             button_size: $('#button-size').val(),
             button_color: $('#button-color').val(),
+            button_tracking: $('#button-tracking').val(),
+            tracking_event: $('#tracking-event').val(),
             custom_css: $('#custom-css').val()
         };
         
@@ -74,6 +76,15 @@ jQuery(document).ready(function($) {
             }, 2000);
         } catch (err) {
             alert('Unable to copy. Please select and copy manually.');
+        }
+    });
+    
+    // Show/hide tracking event field based on tracking selection
+    $('#button-tracking').on('change', function() {
+        if ($(this).val() === 'none') {
+            $('#tracking-event-row').hide();
+        } else {
+            $('#tracking-event-row').show();
         }
     });
     

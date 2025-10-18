@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Simple Button Generator
  * Plugin URI: https://wordpress.org/plugins/simple-button-generator/
- * Description: Generate professional customizable buttons with multiple sizes, colors, and styles. Download HTML files for any website with live preview and custom CSS support.
+ * Description: Generate professional customizable buttons with multiple sizes, colors, and styles. Includes analytics tracking, live preview, and custom CSS support. Download HTML files for any website.
  * Version: 1.0.0
  * Author: Your Name
  * Author URI: https://yourwebsite.com
@@ -112,6 +112,30 @@ class SimpleButtonGenerator {
                                     <option value="custom">Custom</option>
                                 </select>
                                 <p class="description">Choose a predefined color scheme</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="button-tracking">Analytics Tracking</label>
+                            </th>
+                            <td>
+                                <select id="button-tracking" name="button_tracking">
+                                    <option value="none">No Tracking</option>
+                                    <option value="google-analytics">Google Analytics (gtag)</option>
+                                    <option value="google-analytics-ga">Google Analytics (ga)</option>
+                                    <option value="facebook-pixel">Facebook Pixel</option>
+                                    <option value="custom">Custom Event</option>
+                                </select>
+                                <p class="description">Add tracking for button clicks to measure performance</p>
+                            </td>
+                        </tr>
+                        <tr id="tracking-event-row" style="display: none;">
+                            <th scope="row">
+                                <label for="tracking-event">Event ID/Name</label>
+                            </th>
+                            <td>
+                                <input type="text" id="tracking-event" name="tracking_event" class="regular-text" placeholder="button_click" value="button_click">
+                                <p class="description">Event name for analytics tracking (e.g., "download_button", "contact_form")</p>
                             </td>
                         </tr>
                         <tr>
@@ -324,6 +348,8 @@ class SimpleButtonGenerator {
         $button_action = esc_url_raw($_POST['button_action']);
         $button_size = sanitize_text_field($_POST['button_size']);
         $button_color = sanitize_text_field($_POST['button_color']);
+        $button_tracking = sanitize_text_field($_POST['button_tracking']);
+        $tracking_event = sanitize_text_field($_POST['tracking_event']);
         $custom_css = wp_strip_all_tags($_POST['custom_css']);
         
         // Size CSS
@@ -363,6 +389,9 @@ class SimpleButtonGenerator {
         
         $final_css = $default_css . "\n" . $custom_css;
         
+        // Generate tracking code
+        $tracking_code = $this->get_tracking_code($button_tracking, $tracking_event, $button_title);
+        
         $html_code = '<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -375,7 +404,7 @@ class SimpleButtonGenerator {
 </head>
 <body>
     <div style="padding: 20px; text-align: center;">
-        <a href="' . $button_action . '" class="simple-button">' . esc_html($button_title) . '</a>
+        <a href="' . $button_action . '" class="simple-button" onclick="' . $tracking_code . '">' . esc_html($button_title) . '</a>
     </div>
 </body>
 </html>';
@@ -461,6 +490,32 @@ class SimpleButtonGenerator {
 .simple-button:hover {
     background-color: #005a87;
 }';
+        }
+    }
+    
+    private function get_tracking_code($tracking_type, $event_name, $button_title) {
+        if ($tracking_type === 'none') {
+            return '';
+        }
+        
+        $event_name = !empty($event_name) ? $event_name : 'button_click';
+        $button_title_safe = esc_js($button_title);
+        
+        switch ($tracking_type) {
+            case 'google-analytics':
+                return "gtag('event', '" . esc_js($event_name) . "', {'event_category': 'button', 'event_label': '" . $button_title_safe . "'});";
+                
+            case 'google-analytics-ga':
+                return "ga('send', 'event', 'button', '" . esc_js($event_name) . "', '" . $button_title_safe . "');";
+                
+            case 'facebook-pixel':
+                return "fbq('track', 'Lead', {content_name: '" . $button_title_safe . "', content_category: 'button'});";
+                
+            case 'custom':
+                return "console.log('Button clicked: " . $button_title_safe . "'); // Custom tracking - replace with your analytics code";
+                
+            default:
+                return '';
         }
     }
 }
