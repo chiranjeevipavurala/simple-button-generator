@@ -222,6 +222,12 @@ jQuery(document).ready(function($) {
             updateLivePreview();
         });
 
+        // Border width change handler
+        $('#border-width').on('change', function() {
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
         // Border color change handler
         $('#border-color').on('change', function() {
             var borderColor = $(this).val();
@@ -311,6 +317,11 @@ jQuery(document).ready(function($) {
 
         // Initialize border controls on page load
         initializeBorderControls();
+        
+        // Initialize live preview on page load
+        if ($('#button-title').val() && $('#button-action').val()) {
+            updateLivePreview();
+        }
     
     // Show/hide tracking event field based on tracking selection
     $('#button-tracking').on('change', function() {
@@ -321,8 +332,64 @@ jQuery(document).ready(function($) {
         }
     });
     
+    function getBorderCss(borderStyle, borderWidth, borderColor, borderRadius) {
+        var css = '';
+        
+        // Border style and width
+        if (borderStyle !== 'none') {
+            css += `
+.simple-button {
+    border-style: ${borderStyle};
+    border-width: ${borderWidth};`;
+            
+            // Border color
+            if (borderColor === 'auto') {
+                css += `
+    border-color: rgba(0, 0, 0, 0.2);`;
+            } else if (borderColor === 'white') {
+                css += `
+    border-color: #ffffff;`;
+            } else if (borderColor === 'black') {
+                css += `
+    border-color: #000000;`;
+            } else if (borderColor === 'gray') {
+                css += `
+    border-color: #6c757d;`;
+            } else if (borderColor === 'navy') {
+                css += `
+    border-color: #2c3e50;`;
+            } else if (borderColor === 'dark') {
+                css += `
+    border-color: #343a40;`;
+            } else {
+                css += `
+    border-color: #000000;`;
+            }
+            
+            css += `
+}`;
+        }
+        
+        // Border radius
+        if (borderRadius !== '0') {
+            css += `
+.simple-button {
+    border-radius: ${borderRadius}px;
+}`;
+        }
+        
+        return css;
+    }
+    
     // Live preview as user types
-    $('#button-title, #button-action, #button-size, #button-color, #custom-css').on('input change', function() {
+    $('#button-title, #button-action, #button-size, #button-color, #border-style, #border-width, #border-color, #custom-css').on('input change', function() {
+        if ($('#button-title').val() && $('#button-action').val()) {
+            updateLivePreview();
+        }
+    });
+    
+    // Live preview for border radius radio buttons
+    $('input[name="border_radius"]').on('change', function() {
         if ($('#button-title').val() && $('#button-action').val()) {
             updateLivePreview();
         }
@@ -333,6 +400,10 @@ jQuery(document).ready(function($) {
         var action = $('#button-action').val() || '#';
         var size = $('#button-size').val() || 'medium';
         var color = $('#button-color').val() || 'blue';
+        var borderStyle = $('#border-style').val() || 'none';
+        var borderWidth = $('#border-width').val() || '1px';
+        var borderColor = $('#border-color').val() || 'auto';
+        var borderRadius = $('input[name="border_radius"]:checked').val() || '0';
         var customCss = $('#custom-css').val();
         
         // Base CSS
@@ -340,10 +411,8 @@ jQuery(document).ready(function($) {
 .simple-button {
     display: inline-block;
     text-decoration: none;
-    border-radius: 4px;
     font-family: Arial, sans-serif;
     font-weight: bold;
-    border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -367,7 +436,10 @@ jQuery(document).ready(function($) {
         // Color CSS
         var colorCss = getColorCss(color);
         
-        var finalCss = baseCss + sizeCss + colorCss + '\n' + customCss;
+        // Border CSS
+        var borderCss = getBorderCss(borderStyle, borderWidth, borderColor, borderRadius);
+        
+        var finalCss = baseCss + sizeCss + colorCss + borderCss + '\n' + customCss;
         
         // Create a temporary style element
         var tempStyle = $('<style>').text(finalCss);
