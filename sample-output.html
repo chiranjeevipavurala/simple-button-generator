@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Button Output - Simple Button Generator</title>
+    <style>
+.simple-button {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.simple-button:hover {
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.simple-button:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.simple-button {
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+.simple-button {
+    background-color: #0073aa;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #005a87;
+}
+    </style>
+</head>
+<body>
+    <div style="padding: 20px; text-align: center;">
+        <h1>Sample Button Output</h1>
+        <p>This is what your plugin generates:</p>
+        <a href="https://example.com" class="simple-button">Click Me</a>
+        
+        <h2>Different Sizes</h2>
+        <p>
+            <a href="#" class="simple-button" style="padding: 8px 16px; font-size: 14px;">Small Button</a>
+            <a href="#" class="simple-button" style="padding: 12px 24px; font-size: 16px;">Medium Button</a>
+            <a href="#" class="simple-button" style="padding: 16px 32px; font-size: 18px;">Large Button</a>
+        </p>
+        
+        <h2>Different Colors</h2>
+        <p>
+            <a href="#" class="simple-button" style="background-color: #28a745;">Green Button</a>
+            <a href="#" class="simple-button" style="background-color: #dc3545;">Red Button</a>
+            <a href="#" class="simple-button" style="background-color: #fd7e14;">Orange Button</a>
+            <a href="#" class="simple-button" style="background-color: #6f42c1;">Purple Button</a>
+        </p>
+        
+        <h2>Custom Styling Example</h2>
+        <p>
+            <a href="#" class="simple-button" style="background-color: #28a745; border-radius: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">Custom Styled Button</a>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+.button-generator-container {
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.button-generator-container h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #23282d;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#button-preview {
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+#preview-container {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#download-section {
+    background: #f0f8ff;
+    padding: 20px;
+    border: 1px solid #b3d9ff;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+#generated-code {
+    width: 100%;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.button-group {
+    margin: 15px 0;
+}
+
+.button-group .button {
+    margin-right: 10px;
+}
+
+.form-table th {
+    width: 200px;
+    padding: 20px 10px 20px 0;
+}
+
+.form-table td {
+    padding: 15px 10px;
+}
+
+.description {
+    font-style: italic;
+    color: #666;
+    margin-top: 5px;
+}
+
+#custom-css {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
+
+.simple-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.simple-button:hover {
+    background-color: #005a87;
+    color: white;
+    text-decoration: none;
+}
+
+.simple-button:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
