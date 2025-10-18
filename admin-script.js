@@ -206,4 +206,27 @@ jQuery(document).ready(function($) {
 }`;
         }
     }
+    
+    // CSS Examples Modal Functions
+    window.showCSSExamples = function() {
+        $('#css-examples-modal').show();
+    };
+    
+    window.closeCSSExamples = function() {
+        $('#css-examples-modal').hide();
+    };
+    
+    // Close modal when clicking outside
+    $('#css-examples-modal').on('click', function(e) {
+        if (e.target === this) {
+            closeCSSExamples();
+        }
+    });
+    
+    // Close modal with Escape key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#css-examples-modal').is(':visible')) {
+            closeCSSExamples();
+        }
+    });
 });

@@ -119,11 +119,45 @@ class SimpleButtonGenerator {
                                 <label for="custom-css">Custom CSS</label>
                             </th>
                             <td>
-                                <textarea id="custom-css" name="custom_css" rows="10" cols="50" class="large-text code" placeholder="/* Add your custom CSS here */
+                                <textarea id="custom-css" name="custom_css" rows="15" cols="50" class="large-text code" placeholder="/* Custom CSS Examples - Uncomment and modify as needed */
+
+/* Rounded Button */
 .simple-button {
-    /* Your custom styles */
-}"></textarea>
-                                <p class="description">Optional: Add custom CSS to override default styling</p>
+    border-radius: 25px;
+}
+
+/* Button with Shadow */
+.simple-button {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Gradient Background */
+.simple-button {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Animated Button */
+.simple-button {
+    transition: all 0.3s ease;
+}
+.simple-button:hover {
+    transform: scale(1.05);
+}
+
+/* Custom Size */
+.simple-button {
+    padding: 20px 40px;
+    font-size: 18px;
+}
+
+/* Add your own custom styles below */"></textarea>
+                                <p class="description">
+                                    <strong>💡 Pro Tips:</strong><br>
+                                    • Uncomment any example above to use it<br>
+                                    • Combine multiple styles for unique looks<br>
+                                    • Use <a href="#" onclick="showCSSExamples(); return false;">CSS Examples Guide</a> for more ideas<br>
+                                    • Leave empty to use default styling
+                                </p>
                             </td>
                         </tr>
                     </table>
@@ -146,6 +180,137 @@ class SimpleButtonGenerator {
                         <button type="button" id="download-button" class="button button-secondary">Download HTML File</button>
                         <button type="button" id="copy-code" class="button button-secondary">Copy Code</button>
                     </p>
+                </div>
+            </div>
+            
+            <!-- CSS Examples Modal -->
+            <div id="css-examples-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; max-width: 800px; max-height: 80vh; overflow-y: auto;">
+                    <h2>🎨 CSS Examples Guide</h2>
+                    <p>Copy and paste these examples into the Custom CSS field, then modify as needed:</p>
+                    
+                    <div style="margin: 20px 0;">
+                        <h3>📐 Size & Spacing</h3>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>/* Extra Large Button */
+.simple-button {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+/* Compact Button */
+.simple-button {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* Full Width Button */
+.simple-button {
+    width: 100%;
+    display: block;
+}</code></pre>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h3>🎨 Colors & Backgrounds</h3>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>/* Gradient Background */
+.simple-button {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Two-Tone Button */
+.simple-button {
+    background: linear-gradient(to right, #ff6b6b 50%, #4ecdc4 50%);
+}
+
+/* Transparent Button with Border */
+.simple-button {
+    background: transparent;
+    border: 2px solid #0073aa;
+    color: #0073aa;
+}</code></pre>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h3>🔘 Shapes & Borders</h3>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>/* Fully Rounded Button */
+.simple-button {
+    border-radius: 25px;
+}
+
+/* Pill-Shaped Button */
+.simple-button {
+    border-radius: 50px;
+}
+
+/* Square Button */
+.simple-button {
+    border-radius: 0;
+}
+
+/* Custom Border */
+.simple-button {
+    border: 3px solid #333;
+}</code></pre>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h3>✨ Effects & Animations</h3>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>/* Shadow Effect */
+.simple-button {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Glow Effect */
+.simple-button {
+    box-shadow: 0 0 20px rgba(0, 123, 170, 0.5);
+}
+
+/* Scale Animation */
+.simple-button:hover {
+    transform: scale(1.1);
+}
+
+/* Bounce Animation */
+.simple-button:hover {
+    animation: bounce 0.6s;
+}
+@keyframes bounce {
+    0%, 20%, 60%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+}</code></pre>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h3>🎯 Business-Specific Styles</h3>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>/* E-commerce "Buy Now" */
+.simple-button {
+    background: #28a745;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+/* Contact/Support Button */
+.simple-button {
+    background: #17a2b8;
+    border-radius: 20px;
+    padding: 12px 30px;
+}
+
+/* Download Button */
+.simple-button {
+    background: #6c757d;
+    border-radius: 4px;
+    position: relative;
+}
+.simple-button::after {
+    content: " ⬇";
+}</code></pre>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button onclick="closeCSSExamples();" class="button button-primary">Close Guide</button>
+                    </div>
                 </div>
             </div>
         </div>
