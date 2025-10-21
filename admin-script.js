@@ -188,11 +188,11 @@ jQuery(document).ready(function($) {
             $('#button-color').val('custom');
             
             // Update custom CSS field with the color
-            var currentCSS = $('#button-css').val();
+            var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
             newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
             newCSS += 'background-color: ' + customColor + ' !important;';
-            $('#button-css').val(newCSS);
+            $('#custom-css').val(newCSS);
             
             // Trigger live preview update
             updateLivePreview();
@@ -307,10 +307,10 @@ jQuery(document).ready(function($) {
             $('#border-color').val('custom');
             
             // Update custom CSS field with the border color
-            var currentCSS = $('#button-css').val();
+            var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
             newCSS += 'border-color: ' + customColor + ' !important;';
-            $('#button-css').val(newCSS);
+            $('#custom-css').val(newCSS);
             
             // Trigger live preview update
             updateLivePreview();
@@ -450,6 +450,24 @@ jQuery(document).ready(function($) {
             } else if (borderColor === 'dark') {
                 css += `
     border-color: #343a40;`;
+            } else if (borderColor === 'blue') {
+                css += `
+    border-color: #0073aa;`;
+            } else if (borderColor === 'green') {
+                css += `
+    border-color: #28a745;`;
+            } else if (borderColor === 'red') {
+                css += `
+    border-color: #dc3545;`;
+            } else if (borderColor === 'orange') {
+                css += `
+    border-color: #fd7e14;`;
+            } else if (borderColor === 'purple') {
+                css += `
+    border-color: #6f42c1;`;
+            } else if (borderColor === 'teal') {
+                css += `
+    border-color: #17a2b8;`;
             } else {
                 css += `
     border-color: #000000;`;
@@ -604,6 +622,133 @@ jQuery(document).ready(function($) {
 }
 .simple-button:hover {
     background-color: #5a32a3;
+}`;
+            case 'navy':
+                return `
+.simple-button {
+    background-color: #2c3e50;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #1a252f;
+}`;
+            case 'teal':
+                return `
+.simple-button {
+    background-color: #17a2b8;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #138496;
+}`;
+            case 'gray':
+                return `
+.simple-button {
+    background-color: #6c757d;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #5a6268;
+}`;
+            case 'dark':
+                return `
+.simple-button {
+    background-color: #343a40;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #23272b;
+}`;
+            case 'pink':
+                return `
+.simple-button {
+    background-color: #e83e8c;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #d91a72;
+}`;
+            case 'cyan':
+                return `
+.simple-button {
+    background-color: #20c997;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #1aa179;
+}`;
+            case 'yellow':
+                return `
+.simple-button {
+    background-color: #ffc107;
+    color: #212529;
+}
+.simple-button:hover {
+    background-color: #e0a800;
+    color: #212529;
+}`;
+            case 'lime':
+                return `
+.simple-button {
+    background-color: #28a745;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #218838;
+}`;
+            case 'coral':
+                return `
+.simple-button {
+    background-color: #ff6b6b;
+    color: white;
+}
+.simple-button:hover {
+    background-color: #ff5252;
+}`;
+            case 'gradient-blue':
+                return `
+.simple-button {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+.simple-button:hover {
+    background: linear-gradient(45deg, #5a6fd8 0%, #6a4190 100%);
+}`;
+            case 'gradient-green':
+                return `
+.simple-button {
+    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+.simple-button:hover {
+    background: linear-gradient(45deg, #3d8bfe 0%, #00d4fe 100%);
+}`;
+            case 'gradient-red':
+                return `
+.simple-button {
+    background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+    color: white;
+}
+.simple-button:hover {
+    background: linear-gradient(45deg, #f95d8a 0%, #fdd835 100%);
+}`;
+            case 'gradient-purple':
+                return `
+.simple-button {
+    background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);
+    color: white;
+}
+.simple-button:hover {
+    background: linear-gradient(45deg, #9ce5e2 0%, #fdc9d7 100%);
+}`;
+            case 'gradient-sunset':
+                return `
+.simple-button {
+    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);
+    color: white;
+}
+.simple-button:hover {
+    background: linear-gradient(45deg, #ff8a8e 0%, #fec5ef 100%);
 }`;
             default: // blue
                 return `

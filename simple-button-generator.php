@@ -349,26 +349,35 @@ class SimpleButtonGenerator {
                                     <option value="white">White</option>
                                     <option value="black">Black</option>
                                     <option value="gray">Gray</option>
+                                    <option value="navy">Navy</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="red">Red</option>
+                                    <option value="orange">Orange</option>
+                                    <option value="purple">Purple</option>
+                                    <option value="teal">Teal</option>
                                     <option value="custom">Custom Color</option>
                                 </select>
                                 <p class="description">Choose the border color</p>
                                 
                                 <!-- Border Color Palette -->
                                 <div id="border-color-palette" style="margin-top: 10px; display: none;">
-                                    <h4 style="margin: 10px 0 5px 0; font-size: 14px;">Border Color Selection:</h4>
-                                    <div class="color-palette-grid">
+                                    <h4 style="margin: 10px 0 5px 0; font-size: 14px;">Choose Border Color:</h4>
+                                    <div class="color-palette-simple">
                                         <!-- Border Color Swatches -->
-                                        <div class="color-group">
-                                            <h5>Border Colors</h5>
-                                            <div class="color-row">
-                                                <div class="color-swatch border-swatch" data-color="auto" style="background: linear-gradient(45deg, #333 50%, #666 50%);" title="Auto (Darker)"></div>
-                                                <div class="color-swatch border-swatch" data-color="white" style="background: #ffffff; border: 1px solid #ddd;" title="White"></div>
-                                                <div class="color-swatch border-swatch" data-color="black" style="background: #000000;" title="Black"></div>
-                                                <div class="color-swatch border-swatch" data-color="gray" style="background: #6c757d;" title="Gray"></div>
-                                                <div class="color-swatch border-swatch" data-color="navy" style="background: #2c3e50;" title="Navy"></div>
-                                                <div class="color-swatch border-swatch" data-color="dark" style="background: #343a40;" title="Dark"></div>
-                                            </div>
-                                        </div>
+                                        <div class="color-swatch border-swatch" data-color="auto" style="background: linear-gradient(45deg, #333 50%, #666 50%);" title="Auto (Darker)"></div>
+                                        <div class="color-swatch border-swatch" data-color="white" style="background: #ffffff; border: 1px solid #ddd;" title="White"></div>
+                                        <div class="color-swatch border-swatch" data-color="black" style="background: #000000;" title="Black"></div>
+                                        <div class="color-swatch border-swatch" data-color="gray" style="background: #6c757d;" title="Gray"></div>
+                                        <div class="color-swatch border-swatch" data-color="navy" style="background: #2c3e50;" title="Navy"></div>
+                                        <div class="color-swatch border-swatch" data-color="dark" style="background: #343a40;" title="Dark"></div>
+                                        <div class="color-swatch border-swatch" data-color="blue" style="background: #0073aa;" title="Blue"></div>
+                                        <div class="color-swatch border-swatch" data-color="green" style="background: #28a745;" title="Green"></div>
+                                        <div class="color-swatch border-swatch" data-color="red" style="background: #dc3545;" title="Red"></div>
+                                        <div class="color-swatch border-swatch" data-color="orange" style="background: #fd7e14;" title="Orange"></div>
+                                        <div class="color-swatch border-swatch" data-color="purple" style="background: #6f42c1;" title="Purple"></div>
+                                        <div class="color-swatch border-swatch" data-color="teal" style="background: #17a2b8;" title="Teal"></div>
                                     </div>
                                     
                                     <!-- Custom Border Color Picker -->
@@ -977,6 +986,24 @@ class SimpleButtonGenerator {
             } elseif ($border_color === 'dark') {
                 $css .= '
     border-color: #343a40;';
+            } elseif ($border_color === 'blue') {
+                $css .= '
+    border-color: #0073aa;';
+            } elseif ($border_color === 'green') {
+                $css .= '
+    border-color: #28a745;';
+            } elseif ($border_color === 'red') {
+                $css .= '
+    border-color: #dc3545;';
+            } elseif ($border_color === 'orange') {
+                $css .= '
+    border-color: #fd7e14;';
+            } elseif ($border_color === 'purple') {
+                $css .= '
+    border-color: #6f42c1;';
+            } elseif ($border_color === 'teal') {
+                $css .= '
+    border-color: #17a2b8;';
             } else {
                 // Custom color - will be handled by custom CSS
                 $css .= '
