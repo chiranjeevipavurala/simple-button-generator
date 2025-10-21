@@ -218,6 +218,34 @@ jQuery(document).ready(function($) {
                 $('#border-width-row, #border-color-row').show();
             }
             
+            // Update border style examples selection
+            $('.border-example').removeClass('selected');
+            $('.border-example[data-style="' + borderStyle + '"]').addClass('selected');
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Border style example click handler
+        $('.border-example').on('click', function() {
+            var borderStyle = $(this).data('style');
+            
+            // Remove selected class from all examples
+            $('.border-example').removeClass('selected');
+            
+            // Add selected class to clicked example
+            $(this).addClass('selected');
+            
+            // Update the dropdown
+            $('#border-style').val(borderStyle);
+            
+            // Show/hide border options
+            if (borderStyle === 'none') {
+                $('#border-width-row, #border-color-row').hide();
+            } else {
+                $('#border-width-row, #border-color-row').show();
+            }
+            
             // Trigger live preview update
             updateLivePreview();
         });
@@ -302,6 +330,10 @@ jQuery(document).ready(function($) {
             } else {
                 $('#border-width-row, #border-color-row').show();
             }
+            
+            // Initialize border style examples selection
+            $('.border-example').removeClass('selected');
+            $('.border-example[data-style="' + borderStyle + '"]').addClass('selected');
             
             var borderColor = $('#border-color').val();
             if (borderColor === 'custom') {

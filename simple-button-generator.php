@@ -81,6 +81,14 @@ class SimpleButtonGenerator {
             <div class="button-generator-container">
                 <form id="button-generator-form">
                     <table class="form-table">
+                        <!-- Button Text & Content Section -->
+                        <tr class="section-header">
+                            <th colspan="2">
+                                <h3 class="section-title">📝 Button Text & Content</h3>
+                                <p class="section-description">Configure the button text and action</p>
+                            </th>
+                        </tr>
+                        
                         <tr>
                             <th scope="row">
                                 <label for="button-title">Button Title</label>
@@ -180,6 +188,15 @@ class SimpleButtonGenerator {
                                 <p class="description">ID of the element to scroll to</p>
                             </td>
                         </tr>
+                        
+                        <!-- Button Appearance Section -->
+                        <tr class="section-header">
+                            <th colspan="2">
+                                <h3 class="section-title">🎨 Button Appearance</h3>
+                                <p class="section-description">Customize the visual style of your button</p>
+                            </th>
+                        </tr>
+                        
                         <tr>
                             <th scope="row">
                                 <label for="button-size">Button Size</label>
@@ -245,7 +262,14 @@ class SimpleButtonGenerator {
                             </td>
                         </tr>
                         
-                        <!-- Border Options -->
+                        <!-- Border Options Section -->
+                        <tr class="section-header">
+                            <th colspan="2">
+                                <h3 class="section-title">🔲 Border Options</h3>
+                                <p class="section-description">Add borders and customize corner styles</p>
+                            </th>
+                        </tr>
+                        
                         <tr>
                             <th scope="row">
                                 <label for="border-style">Border Style</label>
@@ -259,6 +283,43 @@ class SimpleButtonGenerator {
                                     <option value="double">Double</option>
                                 </select>
                                 <p class="description">Choose the border style for your button</p>
+                                
+                                <!-- Border Style Visual Examples -->
+                                <div class="border-style-examples" style="margin-top: 15px;">
+                                    <h4 style="margin: 10px 0 5px 0; font-size: 14px;">Border Style Examples:</h4>
+                                    <div class="border-examples-grid">
+                                        <div class="border-example" data-style="none">
+                                            <div class="border-preview" style="border: none; background: #f0f0f0; color: #666;">
+                                                <span>None</span>
+                                            </div>
+                                            <label>None</label>
+                                        </div>
+                                        <div class="border-example" data-style="solid">
+                                            <div class="border-preview" style="border: 2px solid #333;">
+                                                <span>Solid</span>
+                                            </div>
+                                            <label>Solid</label>
+                                        </div>
+                                        <div class="border-example" data-style="dashed">
+                                            <div class="border-preview" style="border: 2px dashed #333;">
+                                                <span>Dashed</span>
+                                            </div>
+                                            <label>Dashed</label>
+                                        </div>
+                                        <div class="border-example" data-style="dotted">
+                                            <div class="border-preview" style="border: 2px dotted #333;">
+                                                <span>Dotted</span>
+                                            </div>
+                                            <label>Dotted</label>
+                                        </div>
+                                        <div class="border-example" data-style="double">
+                                            <div class="border-preview" style="border: 4px double #333;">
+                                                <span>Double</span>
+                                            </div>
+                                            <label>Double</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         
@@ -345,6 +406,14 @@ class SimpleButtonGenerator {
                                 </div>
                                 <p class="description">Choose the corner style for your button</p>
                             </td>
+                        </tr>
+                        
+                        <!-- Advanced Options Section -->
+                        <tr class="section-header">
+                            <th colspan="2">
+                                <h3 class="section-title">⚙️ Advanced Options</h3>
+                                <p class="section-description">Analytics tracking and custom styling</p>
+                            </th>
                         </tr>
                         
                         <tr>
