@@ -128,11 +128,11 @@ jQuery(document).ready(function($) {
         });
 
         // Color palette functionality
-        $('.color-swatch').on('click', function() {
+        $('.color-swatch:not(.border-swatch)').on('click', function() {
             var colorValue = $(this).data('color');
             
-            // Remove selected class from all swatches
-            $('.color-swatch').removeClass('selected');
+            // Remove selected class from all button color swatches (not border swatches)
+            $('.color-swatch:not(.border-swatch)').removeClass('selected');
             
             // Add selected class to clicked swatch
             $(this).addClass('selected');
@@ -181,8 +181,8 @@ jQuery(document).ready(function($) {
         $('#apply-custom-color').on('click', function() {
             var customColor = $('#custom-color-picker').val();
             
-            // Remove selected class from all swatches
-            $('.color-swatch').removeClass('selected');
+            // Remove selected class from all button color swatches (not border swatches)
+            $('.color-swatch:not(.border-swatch)').removeClass('selected');
             
             // Set dropdown to custom
             $('#button-color').val('custom');
@@ -201,12 +201,24 @@ jQuery(document).ready(function($) {
         // Initialize color palette selection
         function initializeColorPalette() {
             var currentColor = $('#button-color').val();
-            $('.color-swatch').removeClass('selected');
-            $('.color-swatch[data-color="' + currentColor + '"]').addClass('selected');
+            $('.color-swatch:not(.border-swatch)').removeClass('selected');
+            $('.color-swatch:not(.border-swatch)[data-color="' + currentColor + '"]').addClass('selected');
         }
 
         // Initialize on page load
         initializeColorPalette();
+
+        // Button color dropdown change handler
+        $('#button-color').on('change', function() {
+            var selectedColor = $(this).val();
+            
+            // Update color swatch selection
+            $('.color-swatch:not(.border-swatch)').removeClass('selected');
+            $('.color-swatch:not(.border-swatch)[data-color="' + selectedColor + '"]').addClass('selected');
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
 
         // Border style change handler
         $('#border-style').on('change', function() {
