@@ -216,48 +216,11 @@ class SimpleButtonGenerator {
                                 <label for="button-color">Button Color</label>
                             </th>
                             <td>
-                                <select id="button-color" name="button_color">
-                                    <option value="blue" selected>Blue (Default)</option>
-                                    <option value="green">Green</option>
-                                    <option value="red">Red</option>
-                                    <option value="orange">Orange</option>
-                                    <option value="purple">Purple</option>
-                                    <option value="custom">Custom</option>
-                                </select>
-                                <p class="description">Choose a predefined color scheme</p>
-                                
-                                <!-- Color Palette -->
-                                <div id="color-palette" style="margin-top: 10px;">
-                                    <h4 style="margin: 10px 0 5px 0; font-size: 14px;">Choose a Color:</h4>
-                                    <div class="color-palette-simple">
-                                        <!-- Essential Colors -->
-                                        <div class="color-swatch" data-color="blue" style="background: #0073aa;" title="Blue"></div>
-                                        <div class="color-swatch" data-color="green" style="background: #28a745;" title="Green"></div>
-                                        <div class="color-swatch" data-color="red" style="background: #dc3545;" title="Red"></div>
-                                        <div class="color-swatch" data-color="orange" style="background: #fd7e14;" title="Orange"></div>
-                                        <div class="color-swatch" data-color="purple" style="background: #6f42c1;" title="Purple"></div>
-                                        <div class="color-swatch" data-color="navy" style="background: #2c3e50;" title="Navy"></div>
-                                        <div class="color-swatch" data-color="teal" style="background: #17a2b8;" title="Teal"></div>
-                                        <div class="color-swatch" data-color="gray" style="background: #6c757d;" title="Gray"></div>
-                                        <div class="color-swatch" data-color="dark" style="background: #343a40;" title="Dark"></div>
-                                        <div class="color-swatch" data-color="pink" style="background: #e83e8c;" title="Pink"></div>
-                                        <div class="color-swatch" data-color="cyan" style="background: #20c997;" title="Cyan"></div>
-                                        <div class="color-swatch" data-color="yellow" style="background: #ffc107;" title="Yellow"></div>
-                                        
-                                        <!-- Gradient Options -->
-                                        <div class="color-swatch gradient" data-color="gradient-blue" style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);" title="Blue Gradient"></div>
-                                        <div class="color-swatch gradient" data-color="gradient-green" style="background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);" title="Green Gradient"></div>
-                                        <div class="color-swatch gradient" data-color="gradient-red" style="background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);" title="Red Gradient"></div>
-                                        <div class="color-swatch gradient" data-color="gradient-purple" style="background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);" title="Purple Gradient"></div>
-                                        <div class="color-swatch gradient" data-color="gradient-sunset" style="background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);" title="Sunset Gradient"></div>
-                                    </div>
-                                    
-                                    <!-- Custom Color Picker -->
-                                    <div class="custom-color-section" style="margin-top: 15px;">
-                                        <h5>Custom Color</h5>
-                                        <input type="color" id="custom-color-picker" value="#0073aa" style="width: 50px; height: 30px; border: none; border-radius: 4px; cursor: pointer;">
-                                        <button type="button" id="apply-custom-color" class="button button-small">Apply Custom Color</button>
-                                    </div>
+                                <!-- Custom Color Picker -->
+                                <div class="custom-color-section" style="margin-top: 10px;">
+                                    <input type="color" id="custom-color-picker" value="#0073aa" style="width: 50px; height: 30px; border: none; border-radius: 4px; cursor: pointer;">
+                                    <button type="button" id="apply-custom-color" class="button button-small">Apply Color</button>
+                                    <p class="description">Choose any color for your button background</p>
                                 </div>
                             </td>
                         </tr>
@@ -344,48 +307,11 @@ class SimpleButtonGenerator {
                                 <label for="border-color">Border Color</label>
                             </th>
                             <td>
-                                <select id="border-color" name="border_color">
-                                    <option value="auto" selected>Auto (Darker than background)</option>
-                                    <option value="white">White</option>
-                                    <option value="black">Black</option>
-                                    <option value="gray">Gray</option>
-                                    <option value="navy">Navy</option>
-                                    <option value="dark">Dark</option>
-                                    <option value="blue">Blue</option>
-                                    <option value="green">Green</option>
-                                    <option value="red">Red</option>
-                                    <option value="orange">Orange</option>
-                                    <option value="purple">Purple</option>
-                                    <option value="teal">Teal</option>
-                                    <option value="custom">Custom Color</option>
-                                </select>
-                                <p class="description">Choose the border color</p>
-                                
-                                <!-- Border Color Palette -->
-                                <div id="border-color-palette" style="margin-top: 10px; display: none;">
-                                    <h4 style="margin: 10px 0 5px 0; font-size: 14px;">Choose Border Color:</h4>
-                                    <div class="color-palette-simple">
-                                        <!-- Border Color Swatches -->
-                                        <div class="color-swatch border-swatch" data-color="auto" style="background: linear-gradient(45deg, #333 50%, #666 50%);" title="Auto (Darker)"></div>
-                                        <div class="color-swatch border-swatch" data-color="white" style="background: #ffffff; border: 1px solid #ddd;" title="White"></div>
-                                        <div class="color-swatch border-swatch" data-color="black" style="background: #000000;" title="Black"></div>
-                                        <div class="color-swatch border-swatch" data-color="gray" style="background: #6c757d;" title="Gray"></div>
-                                        <div class="color-swatch border-swatch" data-color="navy" style="background: #2c3e50;" title="Navy"></div>
-                                        <div class="color-swatch border-swatch" data-color="dark" style="background: #343a40;" title="Dark"></div>
-                                        <div class="color-swatch border-swatch" data-color="blue" style="background: #0073aa;" title="Blue"></div>
-                                        <div class="color-swatch border-swatch" data-color="green" style="background: #28a745;" title="Green"></div>
-                                        <div class="color-swatch border-swatch" data-color="red" style="background: #dc3545;" title="Red"></div>
-                                        <div class="color-swatch border-swatch" data-color="orange" style="background: #fd7e14;" title="Orange"></div>
-                                        <div class="color-swatch border-swatch" data-color="purple" style="background: #6f42c1;" title="Purple"></div>
-                                        <div class="color-swatch border-swatch" data-color="teal" style="background: #17a2b8;" title="Teal"></div>
-                                    </div>
-                                    
-                                    <!-- Custom Border Color Picker -->
-                                    <div class="custom-color-section" style="margin-top: 15px;">
-                                        <h5>Custom Border Color</h5>
-                                        <input type="color" id="custom-border-color-picker" value="#000000" style="width: 50px; height: 30px; border: none; border-radius: 4px; cursor: pointer;">
-                                        <button type="button" id="apply-custom-border-color" class="button button-small">Apply Custom Border Color</button>
-                                    </div>
+                                <!-- Custom Border Color Picker -->
+                                <div class="custom-color-section" style="margin-top: 10px;">
+                                    <input type="color" id="custom-border-color-picker" value="#000000" style="width: 50px; height: 30px; border: none; border-radius: 4px; cursor: pointer;">
+                                    <button type="button" id="apply-custom-border-color" class="button button-small">Apply Border Color</button>
+                                    <p class="description">Choose any color for your button border</p>
                                 </div>
                             </td>
                         </tr>

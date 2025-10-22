@@ -127,65 +127,10 @@ jQuery(document).ready(function($) {
             }
         });
 
-        // Color palette functionality
-        $('.color-swatch:not(.border-swatch)').on('click', function() {
-            var colorValue = $(this).data('color');
-            
-            // Remove selected class from all button color swatches (not border swatches)
-            $('.color-swatch:not(.border-swatch)').removeClass('selected');
-            
-            // Add selected class to clicked swatch
-            $(this).addClass('selected');
-            
-            // Update the dropdown
-            $('#button-color').val(colorValue);
-            
-            // Update custom color picker if it's a custom color
-            if (colorValue.startsWith('gradient-')) {
-                // For gradients, set a representative color
-                var gradientColors = {
-                    'gradient-blue': '#667eea',
-                    'gradient-green': '#4facfe',
-                    'gradient-red': '#fa709a',
-                    'gradient-purple': '#a8edea',
-                    'gradient-sunset': '#ff9a9e'
-                };
-                $('#custom-color-picker').val(gradientColors[colorValue] || '#0073aa');
-            } else if (colorValue !== 'custom') {
-                // Map color names to hex values
-                var colorMap = {
-                    'blue': '#0073aa',
-                    'green': '#28a745',
-                    'red': '#dc3545',
-                    'orange': '#fd7e14',
-                    'purple': '#6f42c1',
-                    'navy': '#2c3e50',
-                    'teal': '#17a2b8',
-                    'gray': '#6c757d',
-                    'dark': '#343a40',
-                    'indigo': '#6610f2',
-                    'pink': '#e83e8c',
-                    'cyan': '#20c997',
-                    'yellow': '#ffc107',
-                    'lime': '#28a745',
-                    'coral': '#ff6b6b'
-                };
-                $('#custom-color-picker').val(colorMap[colorValue] || '#0073aa');
-            }
-            
-            // Trigger live preview update
-            updateLivePreview();
-        });
 
         // Custom color picker functionality
         $('#apply-custom-color').on('click', function() {
             var customColor = $('#custom-color-picker').val();
-            
-            // Remove selected class from all button color swatches (not border swatches)
-            $('.color-swatch:not(.border-swatch)').removeClass('selected');
-            
-            // Set dropdown to custom
-            $('#button-color').val('custom');
             
             // Update custom CSS field with the color
             var currentCSS = $('#custom-css').val();
@@ -198,27 +143,6 @@ jQuery(document).ready(function($) {
             updateLivePreview();
         });
 
-        // Initialize color palette selection
-        function initializeColorPalette() {
-            var currentColor = $('#button-color').val();
-            $('.color-swatch:not(.border-swatch)').removeClass('selected');
-            $('.color-swatch:not(.border-swatch)[data-color="' + currentColor + '"]').addClass('selected');
-        }
-
-        // Initialize on page load
-        initializeColorPalette();
-
-        // Button color dropdown change handler
-        $('#button-color').on('change', function() {
-            var selectedColor = $(this).val();
-            
-            // Update color swatch selection
-            $('.color-swatch:not(.border-swatch)').removeClass('selected');
-            $('.color-swatch:not(.border-swatch)[data-color="' + selectedColor + '"]').addClass('selected');
-            
-            // Trigger live preview update
-            updateLivePreview();
-        });
 
         // Border style change handler
         $('#border-style').on('change', function() {
@@ -268,55 +192,11 @@ jQuery(document).ready(function($) {
             updateLivePreview();
         });
 
-        // Border color change handler
-        $('#border-color').on('change', function() {
-            var borderColor = $(this).val();
-            
-            if (borderColor === 'custom') {
-                $('#border-color-palette').show();
-            } else {
-                $('#border-color-palette').hide();
-            }
-            
-            // Update border color swatches
-            $('.border-swatch').removeClass('selected');
-            $('.border-swatch[data-color="' + borderColor + '"]').addClass('selected');
-            
-            // Trigger live preview update
-            updateLivePreview();
-        });
 
-        // Border color swatch click handler
-        $('.border-swatch').on('click', function() {
-            var colorValue = $(this).data('color');
-            
-            // Remove selected class from all border swatches
-            $('.border-swatch').removeClass('selected');
-            
-            // Add selected class to clicked swatch
-            $(this).addClass('selected');
-            
-            // Update the dropdown
-            $('#border-color').val(colorValue);
-            
-            // Hide palette if not custom
-            if (colorValue !== 'custom') {
-                $('#border-color-palette').hide();
-            }
-            
-            // Trigger live preview update
-            updateLivePreview();
-        });
 
         // Custom border color picker functionality
         $('#apply-custom-border-color').on('click', function() {
             var customColor = $('#custom-border-color-picker').val();
-            
-            // Remove selected class from all border swatches
-            $('.border-swatch').removeClass('selected');
-            
-            // Set dropdown to custom
-            $('#border-color').val('custom');
             
             // Update custom CSS field with the border color
             var currentCSS = $('#custom-css').val();
@@ -346,17 +226,6 @@ jQuery(document).ready(function($) {
             // Initialize border style examples selection
             $('.border-example').removeClass('selected');
             $('.border-example[data-style="' + borderStyle + '"]').addClass('selected');
-            
-            var borderColor = $('#border-color').val();
-            if (borderColor === 'custom') {
-                $('#border-color-palette').show();
-            } else {
-                $('#border-color-palette').hide();
-            }
-            
-            // Initialize border color swatch selection
-            $('.border-swatch').removeClass('selected');
-            $('.border-swatch[data-color="' + borderColor + '"]').addClass('selected');
         }
 
         // Initialize border controls on page load
@@ -433,7 +302,7 @@ jQuery(document).ready(function($) {
         }
     });
     
-    function getBorderCss(borderStyle, borderWidth, borderColor, borderRadius) {
+    function getBorderCss(borderStyle, borderWidth, borderRadius) {
         var css = '';
         
         // Border style and width
@@ -441,51 +310,8 @@ jQuery(document).ready(function($) {
             css += `
 .simple-button {
     border-style: ${borderStyle};
-    border-width: ${borderWidth};`;
-            
-            // Border color
-            if (borderColor === 'auto') {
-                css += `
-    border-color: rgba(0, 0, 0, 0.2);`;
-            } else if (borderColor === 'white') {
-                css += `
-    border-color: #ffffff;`;
-            } else if (borderColor === 'black') {
-                css += `
-    border-color: #000000;`;
-            } else if (borderColor === 'gray') {
-                css += `
-    border-color: #6c757d;`;
-            } else if (borderColor === 'navy') {
-                css += `
-    border-color: #2c3e50;`;
-            } else if (borderColor === 'dark') {
-                css += `
-    border-color: #343a40;`;
-            } else if (borderColor === 'blue') {
-                css += `
-    border-color: #0073aa;`;
-            } else if (borderColor === 'green') {
-                css += `
-    border-color: #28a745;`;
-            } else if (borderColor === 'red') {
-                css += `
-    border-color: #dc3545;`;
-            } else if (borderColor === 'orange') {
-                css += `
-    border-color: #fd7e14;`;
-            } else if (borderColor === 'purple') {
-                css += `
-    border-color: #6f42c1;`;
-            } else if (borderColor === 'teal') {
-                css += `
-    border-color: #17a2b8;`;
-            } else {
-                css += `
-    border-color: #000000;`;
-            }
-            
-            css += `
+    border-width: ${borderWidth};
+    border-color: rgba(0, 0, 0, 0.2);
 }`;
         }
         
@@ -501,7 +327,7 @@ jQuery(document).ready(function($) {
     }
     
     // Live preview as user types
-    $('#button-title, #button-action, #button-size, #button-color, #border-style, #border-width, #border-color, #custom-css').on('input change', function() {
+    $('#button-title, #button-action, #button-size, #border-style, #border-width, #custom-css').on('input change', function() {
         if ($('#button-title').val() && $('#button-action').val()) {
             updateLivePreview();
         }
@@ -518,10 +344,8 @@ jQuery(document).ready(function($) {
         var title = $('#button-title').val() || 'Click Me';
         var action = $('#button-action').val() || '#';
         var size = $('#button-size').val() || 'medium';
-        var color = $('#button-color').val() || 'blue';
         var borderStyle = $('#border-style').val() || 'none';
         var borderWidth = $('#border-width').val() || '1px';
-        var borderColor = $('#border-color').val() || 'auto';
         var borderRadius = $('input[name="border_radius"]:checked').val() || '0';
         var customCss = $('#custom-css').val();
         
@@ -552,13 +376,10 @@ jQuery(document).ready(function($) {
         // Size CSS
         var sizeCss = getSizeCss(size);
         
-        // Color CSS
-        var colorCss = getColorCss(color);
+        // Border CSS (without color)
+        var borderCss = getBorderCss(borderStyle, borderWidth, borderRadius);
         
-        // Border CSS
-        var borderCss = getBorderCss(borderStyle, borderWidth, borderColor, borderRadius);
-        
-        var finalCss = baseCss + sizeCss + colorCss + borderCss + '\n' + customCss;
+        var finalCss = baseCss + sizeCss + borderCss + '\n' + customCss;
         
         // Create a temporary style element
         var tempStyle = $('<style>').text(finalCss);
@@ -597,182 +418,6 @@ jQuery(document).ready(function($) {
         }
     }
     
-    function getColorCss(color) {
-        switch (color) {
-            case 'green':
-                return `
-.simple-button {
-    background-color: #28a745;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #218838;
-}`;
-            case 'red':
-                return `
-.simple-button {
-    background-color: #dc3545;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #c82333;
-}`;
-            case 'orange':
-                return `
-.simple-button {
-    background-color: #fd7e14;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #e8650e;
-}`;
-            case 'purple':
-                return `
-.simple-button {
-    background-color: #6f42c1;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #5a32a3;
-}`;
-            case 'navy':
-                return `
-.simple-button {
-    background-color: #2c3e50;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #1a252f;
-}`;
-            case 'teal':
-                return `
-.simple-button {
-    background-color: #17a2b8;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #138496;
-}`;
-            case 'gray':
-                return `
-.simple-button {
-    background-color: #6c757d;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #5a6268;
-}`;
-            case 'dark':
-                return `
-.simple-button {
-    background-color: #343a40;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #23272b;
-}`;
-            case 'pink':
-                return `
-.simple-button {
-    background-color: #e83e8c;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #d91a72;
-}`;
-            case 'cyan':
-                return `
-.simple-button {
-    background-color: #20c997;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #1aa179;
-}`;
-            case 'yellow':
-                return `
-.simple-button {
-    background-color: #ffc107;
-    color: #212529;
-}
-.simple-button:hover {
-    background-color: #e0a800;
-    color: #212529;
-}`;
-            case 'lime':
-                return `
-.simple-button {
-    background-color: #28a745;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #218838;
-}`;
-            case 'coral':
-                return `
-.simple-button {
-    background-color: #ff6b6b;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #ff5252;
-}`;
-            case 'gradient-blue':
-                return `
-.simple-button {
-    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-.simple-button:hover {
-    background: linear-gradient(45deg, #5a6fd8 0%, #6a4190 100%);
-}`;
-            case 'gradient-green':
-                return `
-.simple-button {
-    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
-}
-.simple-button:hover {
-    background: linear-gradient(45deg, #3d8bfe 0%, #00d4fe 100%);
-}`;
-            case 'gradient-red':
-                return `
-.simple-button {
-    background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
-    color: white;
-}
-.simple-button:hover {
-    background: linear-gradient(45deg, #f95d8a 0%, #fdd835 100%);
-}`;
-            case 'gradient-purple':
-                return `
-.simple-button {
-    background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);
-    color: white;
-}
-.simple-button:hover {
-    background: linear-gradient(45deg, #9ce5e2 0%, #fdc9d7 100%);
-}`;
-            case 'gradient-sunset':
-                return `
-.simple-button {
-    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);
-    color: white;
-}
-.simple-button:hover {
-    background: linear-gradient(45deg, #ff8a8e 0%, #fec5ef 100%);
-}`;
-            default: // blue
-                return `
-.simple-button {
-    background-color: #0073aa;
-    color: white;
-}
-.simple-button:hover {
-    background-color: #005a87;
-}`;
-        }
-    }
     
     // CSS Examples Modal Functions
     window.showCSSExamples = function() {
