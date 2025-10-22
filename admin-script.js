@@ -158,6 +158,46 @@ jQuery(document).ready(function($) {
             updateLivePreview();
         });
 
+        // Text color picker functionality - real-time preview
+        $('#custom-text-color-picker').on('change input', function() {
+            var customColor = $(this).val();
+            
+            // Update custom CSS field with the text color
+            var currentCSS = $('#custom-css').val();
+            var newCSS = currentCSS.replace(/color:\s*[^;]+;?/g, '');
+            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}';
+            $('#custom-css').val(newCSS);
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Apply text color button
+        $('#apply-custom-text-color').on('click', function() {
+            var customColor = $('#custom-text-color-picker').val();
+            
+            // Update custom CSS field with the text color
+            var currentCSS = $('#custom-css').val();
+            var newCSS = currentCSS.replace(/color:\s*[^;]+;?/g, '');
+            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}';
+            $('#custom-css').val(newCSS);
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Font family change handler
+        $('#font-family').on('change', function() {
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Box shadow change handler
+        $('#box-shadow').on('change', function() {
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
 
         // Border style change handler
         $('#border-style').on('change', function() {
@@ -355,8 +395,42 @@ jQuery(document).ready(function($) {
         return css;
     }
     
+    function getBoxShadowCss(boxShadow) {
+        var css = '';
+        
+        if (boxShadow !== 'none') {
+            var shadowValue = '';
+            switch (boxShadow) {
+                case 'subtle':
+                    shadowValue = '2px 2px 4px rgba(0,0,0,0.1)';
+                    break;
+                case 'medium':
+                    shadowValue = '4px 4px 8px rgba(0,0,0,0.15)';
+                    break;
+                case 'strong':
+                    shadowValue = '6px 6px 12px rgba(0,0,0,0.2)';
+                    break;
+                case 'glow':
+                    shadowValue = '0 0 10px rgba(0,115,170,0.5)';
+                    break;
+                case 'inset':
+                    shadowValue = 'inset 0 2px 4px rgba(0,0,0,0.1)';
+                    break;
+                default:
+                    shadowValue = '2px 2px 4px rgba(0,0,0,0.1)';
+            }
+            
+            css = `
+.simple-button {
+    box-shadow: ${shadowValue};
+}`;
+        }
+        
+        return css;
+    }
+    
     // Live preview as user types
-    $('#button-title, #button-action, #button-size, #border-style, #border-width, #custom-css').on('input change', function() {
+    $('#button-title, #button-action, #button-size, #font-family, #box-shadow, #border-style, #border-width, #custom-css').on('input change', function() {
         if ($('#button-title').val() && $('#button-action').val()) {
             updateLivePreview();
         }
@@ -373,6 +447,8 @@ jQuery(document).ready(function($) {
         var title = $('#button-title').val() || 'Click Me';
         var action = $('#button-action').val() || '#';
         var size = $('#button-size').val() || 'medium';
+        var fontFamily = $('#font-family').val() || 'Arial, sans-serif';
+        var boxShadow = $('#box-shadow').val() || 'none';
         var borderStyle = $('#border-style').val() || 'none';
         var borderWidth = $('#border-width').val() || '1px';
         var borderRadius = $('input[name="border_radius"]:checked').val() || '0';
@@ -383,24 +459,16 @@ jQuery(document).ready(function($) {
 .simple-button {
     display: inline-block;
     text-decoration: none;
-    font-family: Arial, sans-serif;
+    font-family: ${fontFamily};
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
     box-sizing: border-box;
-}
-
-.simple-button:hover {
-    color: white;
-    text-decoration: none;
-    transform: translateY(-1px);
-}
-
-.simple-button:focus {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
 }`;
+
+        // Box shadow CSS
+        var shadowCss = getBoxShadowCss(boxShadow);
         
         // Size CSS
         var sizeCss = getSizeCss(size);
@@ -408,7 +476,7 @@ jQuery(document).ready(function($) {
         // Border CSS (without color)
         var borderCss = getBorderCss(borderStyle, borderWidth, borderRadius);
         
-        var finalCss = baseCss + sizeCss + borderCss + '\n' + customCss;
+        var finalCss = baseCss + sizeCss + shadowCss + borderCss + '\n' + customCss;
         
         // Create a temporary style element
         var tempStyle = $('<style>').text(finalCss);

@@ -225,6 +225,57 @@ class SimpleButtonGenerator {
                             </td>
                         </tr>
                         
+                        <tr>
+                            <th scope="row">
+                                <label for="text-color">Text Color</label>
+                            </th>
+                            <td>
+                                <!-- Custom Text Color Picker -->
+                                <div class="custom-color-section" style="margin-top: 10px;">
+                                    <input type="color" id="custom-text-color-picker" value="#ffffff" style="width: 50px; height: 30px; border: none; border-radius: 4px; cursor: pointer;">
+                                    <button type="button" id="apply-custom-text-color" class="button button-small">Apply Text Color</button>
+                                    <p class="description">Choose any color for your button text</p>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">
+                                <label for="font-family">Font Family</label>
+                            </th>
+                            <td>
+                                <select id="font-family" name="font_family">
+                                    <option value="Arial, sans-serif" selected>Arial (Default)</option>
+                                    <option value="Helvetica, sans-serif">Helvetica</option>
+                                    <option value="Georgia, serif">Georgia</option>
+                                    <option value="Times New Roman, serif">Times New Roman</option>
+                                    <option value="Verdana, sans-serif">Verdana</option>
+                                    <option value="Tahoma, sans-serif">Tahoma</option>
+                                    <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+                                    <option value="Impact, sans-serif">Impact</option>
+                                    <option value="Courier New, monospace">Courier New</option>
+                                </select>
+                                <p class="description">Choose the font family for your button text</p>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">
+                                <label for="box-shadow">Box Shadow</label>
+                            </th>
+                            <td>
+                                <select id="box-shadow" name="box_shadow">
+                                    <option value="none" selected>None</option>
+                                    <option value="subtle">Subtle (2px 2px 4px rgba(0,0,0,0.1))</option>
+                                    <option value="medium">Medium (4px 4px 8px rgba(0,0,0,0.15))</option>
+                                    <option value="strong">Strong (6px 6px 12px rgba(0,0,0,0.2))</option>
+                                    <option value="glow">Glow (0 0 10px rgba(0,115,170,0.5))</option>
+                                    <option value="inset">Inset (inset 0 2px 4px rgba(0,0,0,0.1))</option>
+                                </select>
+                                <p class="description">Add shadow effects to your button</p>
+                            </td>
+                        </tr>
+                        
                         <!-- Border Options Section -->
                         <tr class="section-header">
                             <th colspan="2">
@@ -593,6 +644,8 @@ class SimpleButtonGenerator {
         $button_scroll = sanitize_text_field($_POST['button_scroll']);
         $button_size = sanitize_text_field($_POST['button_size']);
         $button_color = sanitize_text_field($_POST['button_color']);
+        $font_family = sanitize_text_field($_POST['font_family']);
+        $box_shadow = sanitize_text_field($_POST['box_shadow']);
         $border_style = sanitize_text_field($_POST['border_style']);
         $border_width = sanitize_text_field($_POST['border_width']);
         $border_color = sanitize_text_field($_POST['border_color']);
@@ -607,13 +660,16 @@ class SimpleButtonGenerator {
         // Border CSS
         $border_css = $this->get_border_css($border_style, $border_width, $border_color, $border_radius);
         
+        // Box shadow CSS
+        $shadow_css = $this->get_box_shadow_css($box_shadow);
+        
         // Base CSS
         $base_css = '
 .simple-button {
     display: inline-block;
     text-decoration: none;
     border-radius: 4px;
-    font-family: Arial, sans-serif;
+    font-family: ' . esc_attr($font_family) . ';
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -634,7 +690,7 @@ class SimpleButtonGenerator {
 }
 ';
         
-        $default_css = $base_css . $size_css . $border_css;
+        $default_css = $base_css . $size_css . $shadow_css . $border_css;
         
         $final_css = $default_css . "\n" . $custom_css;
         
@@ -942,6 +998,40 @@ class SimpleButtonGenerator {
             $css .= '
 .simple-button {
     border-radius: ' . esc_attr($border_radius) . 'px;
+}';
+        }
+        
+        return $css;
+    }
+    
+    private function get_box_shadow_css($box_shadow) {
+        $css = '';
+        
+        if ($box_shadow !== 'none') {
+            $shadow_value = '';
+            switch ($box_shadow) {
+                case 'subtle':
+                    $shadow_value = '2px 2px 4px rgba(0,0,0,0.1)';
+                    break;
+                case 'medium':
+                    $shadow_value = '4px 4px 8px rgba(0,0,0,0.15)';
+                    break;
+                case 'strong':
+                    $shadow_value = '6px 6px 12px rgba(0,0,0,0.2)';
+                    break;
+                case 'glow':
+                    $shadow_value = '0 0 10px rgba(0,115,170,0.5)';
+                    break;
+                case 'inset':
+                    $shadow_value = 'inset 0 2px 4px rgba(0,0,0,0.1)';
+                    break;
+                default:
+                    $shadow_value = '2px 2px 4px rgba(0,0,0,0.1)';
+            }
+            
+            $css = '
+.simple-button {
+    box-shadow: ' . esc_attr($shadow_value) . ';
 }';
         }
         
