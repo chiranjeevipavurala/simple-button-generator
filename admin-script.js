@@ -136,7 +136,7 @@ jQuery(document).ready(function($) {
             var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
             newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
-            newCSS += 'background-color: ' + customColor + ' !important;';
+            newCSS += '\n.simple-button {\n    background-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update (always update, regardless of other fields)
@@ -151,7 +151,7 @@ jQuery(document).ready(function($) {
             var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
             newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
-            newCSS += 'background-color: ' + customColor + ' !important;';
+            newCSS += '\n.simple-button {\n    background-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update

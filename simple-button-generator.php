@@ -604,9 +604,6 @@ class SimpleButtonGenerator {
         // Size CSS
         $size_css = $this->get_size_css($button_size);
         
-        // Color CSS
-        $color_css = $this->get_color_css($button_color);
-        
         // Border CSS
         $border_css = $this->get_border_css($border_style, $border_width, $border_color, $border_radius);
         
@@ -637,7 +634,7 @@ class SimpleButtonGenerator {
 }
 ';
         
-        $default_css = $base_css . $size_css . $color_css . $border_css;
+        $default_css = $base_css . $size_css . $border_css;
         
         $final_css = $default_css . "\n" . $custom_css;
         
