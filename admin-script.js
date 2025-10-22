@@ -134,11 +134,11 @@ jQuery(document).ready(function($) {
         $('#custom-color-picker').on('change input', function() {
             var customColor = $(this).val();
             
-            // Update custom CSS field with the color
+            // Update custom CSS field with the button background color
             var currentCSS = $('#custom-css').val();
-            var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
-            newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    background-color: ' + customColor + ' !important;\n}';
+            // Remove existing button background color section
+            var newCSS = currentCSS.replace(/\/\* Button Background Color \*\/[\s\S]*?\.simple-button\s*\{[\s\S]*?background-color:[^}]+;\s*\}/g, '');
+            newCSS += '\n/* Button Background Color */\n.simple-button {\n    background-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update (always update, regardless of other fields)
@@ -149,11 +149,11 @@ jQuery(document).ready(function($) {
         $('#apply-custom-color').on('click', function() {
             var customColor = $('#custom-color-picker').val();
             
-            // Update custom CSS field with the color
+            // Update custom CSS field with the button background color
             var currentCSS = $('#custom-css').val();
-            var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
-            newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    background-color: ' + customColor + ' !important;\n}';
+            // Remove existing button background color section
+            var newCSS = currentCSS.replace(/\/\* Button Background Color \*\/[\s\S]*?\.simple-button\s*\{[\s\S]*?background-color:[^}]+;\s*\}/g, '');
+            newCSS += '\n/* Button Background Color */\n.simple-button {\n    background-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update
@@ -163,14 +163,13 @@ jQuery(document).ready(function($) {
         // Text color picker functionality - real-time preview
         $('#custom-text-color-picker').on('change input', function() {
             var customColor = $(this).val();
-            console.log('Text color changed to:', customColor);
             
-            // Update custom CSS field with the text color
+            // Update custom CSS field with the button text color
             var currentCSS = $('#custom-css').val();
-            var newCSS = currentCSS.replace(/color:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}\n.simple-button:hover {\n    color: ' + customColor + ' !important;\n}';
+            // Remove existing button text color section
+            var newCSS = currentCSS.replace(/\/\* Button Text Color \*\/[\s\S]*?\.simple-button\s*\{[\s\S]*?color:[^}]+;\s*\}/g, '');
+            newCSS += '\n/* Button Text Color */\n.simple-button {\n    color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
-            console.log('Updated CSS with text color:', newCSS);
             
             // Trigger live preview update
             updateLivePreview();
@@ -180,10 +179,11 @@ jQuery(document).ready(function($) {
         $('#apply-custom-text-color').on('click', function() {
             var customColor = $('#custom-text-color-picker').val();
             
-            // Update custom CSS field with the text color
+            // Update custom CSS field with the button text color
             var currentCSS = $('#custom-css').val();
-            var newCSS = currentCSS.replace(/color:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}\n.simple-button:hover {\n    color: ' + customColor + ' !important;\n}';
+            // Remove existing button text color section
+            var newCSS = currentCSS.replace(/\/\* Button Text Color \*\/[\s\S]*?\.simple-button\s*\{[\s\S]*?color:[^}]+;\s*\}/g, '');
+            newCSS += '\n/* Button Text Color */\n.simple-button {\n    color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update
@@ -257,10 +257,11 @@ jQuery(document).ready(function($) {
         $('#custom-border-color-picker').on('change input', function() {
             var customColor = $(this).val();
             
-            // Update custom CSS field with the border color
+            // Update custom CSS field with the button border color
             var currentCSS = $('#custom-css').val();
-            var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    border-color: ' + customColor + ' !important;\n}';
+            // Remove existing button border color section
+            var newCSS = currentCSS.replace(/\/\* Button Border Color \*\/[\s\S]*?\.simple-button\s*\{[\s\S]*?border-color:[^}]+;\s*\}/g, '');
+            newCSS += '\n/* Button Border Color */\n.simple-button {\n    border-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update (always update, regardless of other fields)
@@ -271,10 +272,11 @@ jQuery(document).ready(function($) {
         $('#apply-custom-border-color').on('click', function() {
             var customColor = $('#custom-border-color-picker').val();
             
-            // Update custom CSS field with the border color
+            // Update custom CSS field with the button border color
             var currentCSS = $('#custom-css').val();
-            var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    border-color: ' + customColor + ' !important;\n}';
+            // Remove existing button border color section
+            var newCSS = currentCSS.replace(/\/\* Button Border Color \*\/[\s\S]*?\.simple-button\s*\{[\s\S]*?border-color:[^}]+;\s*\}/g, '');
+            newCSS += '\n/* Button Border Color */\n.simple-button {\n    border-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update
