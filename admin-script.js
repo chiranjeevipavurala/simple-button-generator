@@ -129,7 +129,7 @@ jQuery(document).ready(function($) {
 
 
         // Custom color picker functionality - real-time preview
-        $('#custom-color-picker').on('change', function() {
+        $('#custom-color-picker').on('change input', function() {
             var customColor = $(this).val();
             
             // Update custom CSS field with the color
@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
             newCSS += 'background-color: ' + customColor + ' !important;';
             $('#custom-css').val(newCSS);
             
-            // Trigger live preview update
+            // Trigger live preview update (always update, regardless of other fields)
             updateLivePreview();
         });
 
@@ -210,7 +210,7 @@ jQuery(document).ready(function($) {
 
 
         // Custom border color picker functionality - real-time preview
-        $('#custom-border-color-picker').on('change', function() {
+        $('#custom-border-color-picker').on('change input', function() {
             var customColor = $(this).val();
             
             // Update custom CSS field with the border color
@@ -219,7 +219,7 @@ jQuery(document).ready(function($) {
             newCSS += 'border-color: ' + customColor + ' !important;';
             $('#custom-css').val(newCSS);
             
-            // Trigger live preview update
+            // Trigger live preview update (always update, regardless of other fields)
             updateLivePreview();
         });
 
