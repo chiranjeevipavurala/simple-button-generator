@@ -17,6 +17,8 @@ jQuery(document).ready(function($) {
             button_scroll: $('#button-scroll').val(),
             button_size: $('#button-size').val(),
             button_color: $('#button-color').val(),
+            font_family: $('#font-family').val(),
+            box_shadow: $('#box-shadow').val(),
             border_style: $('#border-style').val(),
             border_width: $('#border-width').val(),
             border_color: $('#border-color').val(),
