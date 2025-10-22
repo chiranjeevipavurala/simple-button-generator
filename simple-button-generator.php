@@ -676,6 +676,8 @@ class SimpleButtonGenerator {
     transition: all 0.3s ease;
     text-align: center;
     box-sizing: border-box;
+    background-color: #0073aa;
+    color: white;
 }
 
 .simple-button:hover {
