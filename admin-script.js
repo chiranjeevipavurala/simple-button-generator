@@ -216,7 +216,7 @@ jQuery(document).ready(function($) {
             // Update custom CSS field with the border color
             var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
-            newCSS += 'border-color: ' + customColor + ' !important;';
+            newCSS += '\n.simple-button {\n    border-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update (always update, regardless of other fields)
@@ -230,7 +230,7 @@ jQuery(document).ready(function($) {
             // Update custom CSS field with the border color
             var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
-            newCSS += 'border-color: ' + customColor + ' !important;';
+            newCSS += '\n.simple-button {\n    border-color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update
