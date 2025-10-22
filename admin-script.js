@@ -163,12 +163,14 @@ jQuery(document).ready(function($) {
         // Text color picker functionality - real-time preview
         $('#custom-text-color-picker').on('change input', function() {
             var customColor = $(this).val();
+            console.log('Text color changed to:', customColor);
             
             // Update custom CSS field with the text color
             var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/color:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}';
+            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}\n.simple-button:hover {\n    color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
+            console.log('Updated CSS with text color:', newCSS);
             
             // Trigger live preview update
             updateLivePreview();
@@ -181,7 +183,7 @@ jQuery(document).ready(function($) {
             // Update custom CSS field with the text color
             var currentCSS = $('#custom-css').val();
             var newCSS = currentCSS.replace(/color:\s*[^;]+;?/g, '');
-            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}';
+            newCSS += '\n.simple-button {\n    color: ' + customColor + ' !important;\n}\n.simple-button:hover {\n    color: ' + customColor + ' !important;\n}';
             $('#custom-css').val(newCSS);
             
             // Trigger live preview update
