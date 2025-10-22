@@ -128,7 +128,22 @@ jQuery(document).ready(function($) {
         });
 
 
-        // Custom color picker functionality
+        // Custom color picker functionality - real-time preview
+        $('#custom-color-picker').on('change', function() {
+            var customColor = $(this).val();
+            
+            // Update custom CSS field with the color
+            var currentCSS = $('#custom-css').val();
+            var newCSS = currentCSS.replace(/background-color:\s*[^;]+;?/g, '');
+            newCSS = newCSS.replace(/background:\s*[^;]+;?/g, '');
+            newCSS += 'background-color: ' + customColor + ' !important;';
+            $('#custom-css').val(newCSS);
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Apply button for manual application
         $('#apply-custom-color').on('click', function() {
             var customColor = $('#custom-color-picker').val();
             
@@ -194,7 +209,21 @@ jQuery(document).ready(function($) {
 
 
 
-        // Custom border color picker functionality
+        // Custom border color picker functionality - real-time preview
+        $('#custom-border-color-picker').on('change', function() {
+            var customColor = $(this).val();
+            
+            // Update custom CSS field with the border color
+            var currentCSS = $('#custom-css').val();
+            var newCSS = currentCSS.replace(/border-color:\s*[^;]+;?/g, '');
+            newCSS += 'border-color: ' + customColor + ' !important;';
+            $('#custom-css').val(newCSS);
+            
+            // Trigger live preview update
+            updateLivePreview();
+        });
+
+        // Apply button for manual application
         $('#apply-custom-border-color').on('click', function() {
             var customColor = $('#custom-border-color-picker').val();
             
