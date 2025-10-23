@@ -4,25 +4,56 @@ This guide explains how to run tests to ensure the plugin works correctly and th
 
 ## 🧪 Test Suite Overview
 
-The plugin includes a comprehensive test suite with three main components:
+The plugin includes a comprehensive test suite with multiple components organized in the `tests/` directory:
 
-1. **Backend Tests** (`test-suite.php`) - Tests PHP functionality
-2. **Frontend Tests** (`test-frontend.js`) - Tests JavaScript functionality  
-3. **Test Runner** (`run-tests.php`) - Command-line test execution
+1. **Master Test Runner** (`tests/run-all-tests.php`) - Runs all tests with comprehensive reporting
+2. **Backend Tests** (`tests/standalone-tests.php`) - Tests PHP functionality without WordPress
+3. **Plugin Tests** (`tests/test-plugin.php`) - Tests plugin functionality with simulated WordPress
+4. **Analytics Tests** (`tests/test-analytics.php`) - Tests analytics tracking functionality
+5. **Frontend Tests** (`tests/test-frontend.js`) - Tests JavaScript functionality
+6. **Quick Tests** (`tests/quick-test.php`) - Fast basic functionality checks
+7. **Validation Tests** (`tests/validate-updates.php`) - Tests for new features and updates
 
 ## 🚀 Running Tests
 
-### Method 1: Command Line (Recommended)
+### Method 1: Master Test Runner (Recommended)
 
 ```bash
 # Navigate to the plugin directory
 cd /path/to/simple-button-generator
 
-# Run all tests
-php run-tests.php
+# Run all tests with comprehensive reporting
+php tests/run-all-tests.php
 ```
 
-### Method 2: WordPress Admin
+This will run all 7 test suites and provide a detailed summary.
+
+### Method 2: Individual Test Execution
+
+```bash
+# Quick test (fastest)
+php tests/quick-test.php
+
+# Simple test
+php tests/simple-test.php
+
+# Comprehensive standalone tests
+php tests/standalone-tests.php
+
+# Plugin functionality test
+php tests/test-plugin.php
+
+# Analytics tracking test
+php tests/test-analytics.php
+
+# Validate updates test
+php tests/validate-updates.php
+
+# Verify specific failures
+php tests/verify-tests.php
+```
+
+### Method 3: Frontend Tests (Browser)
 
 1. Upload the plugin to your WordPress site
 2. Activate the plugin
@@ -31,29 +62,44 @@ php run-tests.php
 5. Go to Console tab
 6. Frontend tests will run automatically
 
-### Method 3: Direct PHP Execution
-
-```bash
-# Run backend tests directly
-php test-suite.php
+Or run manually in console:
+```javascript
+const tests = new SimpleButtonGeneratorTests();
+tests.runAllTests();
 ```
 
 ## 📋 Test Categories
 
-### Backend Tests
+### Backend Tests (`tests/standalone-tests.php`)
+
+- ✅ **File Structure** - Validates all required files exist
+- ✅ **Plugin File** - Tests plugin syntax and structure
+- ✅ **JavaScript File** - Tests JavaScript functionality
+- ✅ **CSS File** - Tests styling and layout
+- ✅ **HTML Structure** - Tests form elements and controls
+- ✅ **Color Functionality** - Tests color picker logic
+- ✅ **Border Functionality** - Tests border controls
+- ✅ **Action Types** - Tests all button action types
+- ✅ **Analytics Integration** - Tests tracking features
+
+### Plugin Tests (`tests/test-plugin.php`)
 
 - ✅ **Plugin Initialization** - Ensures plugin loads correctly
 - ✅ **Button Generation** - Tests HTML/CSS generation
-- ✅ **Color Functionality** - Tests color picker logic
+- ✅ **Action Type Testing** - Tests all 8 action types
+- ✅ **Color Functionality** - Tests custom color pickers
 - ✅ **Border Functionality** - Tests border controls
-- ✅ **Font Family** - Tests typography options
-- ✅ **Box Shadow** - Tests shadow effects
-- ✅ **Action Types** - Tests button actions
-- ✅ **Analytics Tracking** - Tests tracking integration
-- ✅ **CSS Generation** - Tests CSS output
-- ✅ **AJAX Handling** - Tests server communication
+- ✅ **Analytics Tracking** - Tests tracking code generation
 
-### Frontend Tests
+### Analytics Tests (`tests/test-analytics.php`)
+
+- ✅ **Google Analytics** - Tests gtag event tracking
+- ✅ **Facebook Pixel** - Tests fbq tracking
+- ✅ **Custom Tracking** - Tests custom event logging
+- ✅ **No Tracking** - Tests "none" option
+- ✅ **HTML Generation** - Tests tracking attributes in HTML
+
+### Frontend Tests (`tests/test-frontend.js`)
 
 - ✅ **Color Pickers** - Tests all color input controls
 - ✅ **Border Controls** - Tests border style/width/radius
@@ -63,6 +109,21 @@ php test-suite.php
 - ✅ **Live Preview** - Tests real-time updates
 - ✅ **Form Validation** - Tests required fields
 - ✅ **AJAX Submission** - Tests form submission
+
+### Quick Tests (`tests/quick-test.php`)
+
+- ✅ **File Existence** - Checks all required files
+- ✅ **Plugin Syntax** - Validates PHP syntax
+- ✅ **Plugin Structure** - Checks WordPress plugin requirements
+- ✅ **JavaScript Content** - Validates JS functionality
+- ✅ **CSS Content** - Validates styling
+
+### Validation Tests (`tests/validate-updates.php`)
+
+- ✅ **CSS Examples** - Tests CSS examples modal
+- ✅ **Modal Structure** - Tests modal positioning and styling
+- ✅ **JavaScript Integration** - Tests modal functionality
+- ✅ **Button Integration** - Tests CSS examples button
 
 ## 🔧 Manual Testing Checklist
 
@@ -176,7 +237,7 @@ define('WP_DEBUG_DISPLAY', true);
 
 ### Before Making Changes
 
-1. Run the full test suite
+1. Run the master test suite: `php tests/run-all-tests.php`
 2. Note the current pass rate
 3. Make your changes
 4. Run tests again
@@ -193,14 +254,14 @@ define('WP_DEBUG_DISPLAY', true);
 
 ### Backend Tests
 
-Add new test methods to `test-suite.php`:
+Add new test methods to `tests/standalone-tests.php`:
 
 ```php
 private function testNewFeature() {
     $this->startTest("New Feature");
     
     // Your test logic here
-    $this->assertTrue($condition, "Test message");
+    $this->assertContains($content, 'expected', "Test message");
     
     $this->endTest();
 }
@@ -208,7 +269,7 @@ private function testNewFeature() {
 
 ### Frontend Tests
 
-Add new test methods to `test-frontend.js`:
+Add new test methods to `tests/test-frontend.js`:
 
 ```javascript
 testNewFeature() {
@@ -225,7 +286,7 @@ testNewFeature() {
 2. **Test Edge Cases** - Include boundary conditions and error cases
 3. **Keep Tests Updated** - Update tests when adding new features
 4. **Document Failures** - Record what broke and why
-5. **Automate When Possible** - Use the test runner for consistency
+5. **Automate When Possible** - Use the master test runner for consistency
 
 ## 📞 Support
 
