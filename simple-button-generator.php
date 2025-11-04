@@ -4,14 +4,14 @@
  * Plugin URI: https://wordpress.org/plugins/simple-button-generator/
  * Description: Generate professional customizable buttons with flexible actions (URLs, JavaScript, email, phone, downloads, forms, modals, scroll). Includes analytics tracking, live preview, and custom CSS support. Download HTML files for any website.
  * Version: 1.0.0
- * Author: Your Name
- * Author URI: https://yourwebsite.com
+ * Author: chiranjeevi pavurala
+ * Author URI: https://github.com/chiranjeevipavurala/simple-button-generator
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: simple-button-generator
  * Domain Path: /languages
  * Requires at least: 4.0
- * Tested up to: 6.4
+ * Tested up to: 6.5
  * Requires PHP: 5.6
  * Network: false
  */

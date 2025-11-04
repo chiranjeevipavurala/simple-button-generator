@@ -2,6 +2,8 @@
 
 This guide provides ready-to-use CSS examples that you can copy and paste into the Custom CSS field to create unique button styles.
 
+> **💡 Tip**: You can also access these examples directly from the plugin admin page by clicking the "CSS Examples Guide" link in the Custom CSS field description. This opens a modal with all examples that you can copy directly.
+
 ## 📐 Size & Spacing Examples
 
 ### Extra Large Button

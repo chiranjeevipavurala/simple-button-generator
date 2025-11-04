@@ -35,7 +35,15 @@ No coding knowledge is required. The plugin provides a user-friendly interface w
 6. Download the HTML file
 
 ### Can I customize the button appearance?
-Yes! You can add custom CSS to style your button however you want. The plugin includes professional default styling that you can override.
+Yes! You can customize your button in many ways:
+- Use color pickers for background, text, and border colors
+- Choose from multiple font families
+- Select button sizes (including responsive sizes that adapt to screen size)
+- Add borders with various styles and corner options
+- Apply box shadow effects
+- Add custom CSS for advanced styling
+
+The plugin includes professional default styling that you can override or enhance.
 
 ### Where can I use the generated button?
 The generated HTML file can be used on any website, not just WordPress sites. It's completely self-contained with all styling included.
@@ -52,7 +60,7 @@ The plugin generates a complete HTML file with embedded CSS styling.
 Yes, the plugin works independently of your WordPress theme since it generates standalone HTML files.
 
 ### Is the generated code mobile-friendly?
-Yes, the default styling is responsive and works well on mobile devices.
+Yes, the default styling is responsive and works well on mobile devices. The plugin also includes responsive button size options that automatically adapt to different screen sizes - these are perfect for ensuring your buttons look great on phones, tablets, and desktops.
 
 ### Can I modify the generated HTML file?
 Absolutely! The generated HTML file is yours to modify as needed.
@@ -83,3 +91,15 @@ Absolutely! The generated HTML file is yours to modify as needed.
 
 ### Can I request new features?
 Yes! We welcome feature requests and feedback to improve the plugin.
+
+### How do I use responsive button sizes?
+Select "Responsive Small", "Responsive Medium", "Responsive Large", or "Responsive Extra Large" from the Button Size dropdown. These sizes automatically adapt to different screen sizes - they'll be smaller and full-width on mobile devices, and larger on desktop screens. This ensures optimal button appearance across all devices.
+
+### What is the floating preview panel?
+The floating preview panel is a live preview window that appears on the admin page. It shows your button in real-time as you make changes to colors, sizes, borders, and other settings. You can minimize/maximize it using the toggle button, and it updates instantly as you customize your button.
+
+### How do I access the CSS examples?
+Click the "CSS Examples Guide" link in the Custom CSS field description. This opens a modal with ready-to-use CSS examples that you can copy and paste. The examples include hover effects, gradients, animations, and more.
+
+### Can I use multiple color pickers at once?
+Yes! You can use the background color picker, text color picker, and border color picker independently. Each has its own "Apply Color" button. Click the button after selecting a color to apply it to your button.

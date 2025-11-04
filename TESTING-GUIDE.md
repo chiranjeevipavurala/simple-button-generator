@@ -10,9 +10,10 @@ The plugin includes a comprehensive test suite with multiple components organize
 2. **Backend Tests** (`tests/standalone-tests.php`) - Tests PHP functionality without WordPress
 3. **Plugin Tests** (`tests/test-plugin.php`) - Tests plugin functionality with simulated WordPress
 4. **Analytics Tests** (`tests/test-analytics.php`) - Tests analytics tracking functionality
-5. **Frontend Tests** (`tests/test-frontend.js`) - Tests JavaScript functionality
-6. **Quick Tests** (`tests/quick-test.php`) - Fast basic functionality checks
-7. **Validation Tests** (`tests/validate-updates.php`) - Tests for new features and updates
+5. **Responsive Size Tests** (`tests/test-responsive-sizes.php`) - Tests responsive button size functionality
+6. **Frontend Tests** (`tests/test-frontend.js`) - Tests JavaScript functionality
+7. **Quick Tests** (`tests/quick-test.php`) - Fast basic functionality checks
+8. **Validation Tests** (`tests/validate-updates.php`) - Tests for new features and updates
 
 ## 🚀 Running Tests
 
@@ -45,6 +46,9 @@ php tests/test-plugin.php
 
 # Analytics tracking test
 php tests/test-analytics.php
+
+# Responsive sizes test
+php tests/test-responsive-sizes.php
 
 # Validate updates test
 php tests/validate-updates.php
@@ -118,12 +122,20 @@ tests.runAllTests();
 - ✅ **JavaScript Content** - Validates JS functionality
 - ✅ **CSS Content** - Validates styling
 
+### Responsive Size Tests (`tests/test-responsive-sizes.php`)
+
+- ✅ **Responsive Sizes** - Tests all responsive size options
+- ✅ **CSS Generation** - Tests responsive CSS output
+- ✅ **Media Queries** - Tests responsive breakpoints
+- ✅ **Size Variations** - Tests small, medium, large, extra-large responsive sizes
+
 ### Validation Tests (`tests/validate-updates.php`)
 
 - ✅ **CSS Examples** - Tests CSS examples modal
 - ✅ **Modal Structure** - Tests modal positioning and styling
 - ✅ **JavaScript Integration** - Tests modal functionality
 - ✅ **Button Integration** - Tests CSS examples button
+- ✅ **Floating Preview** - Tests floating preview panel functionality
 
 ## 🔧 Manual Testing Checklist
 

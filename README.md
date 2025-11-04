@@ -7,7 +7,7 @@ A powerful WordPress plugin that allows you to generate customizable buttons tha
 ### **Core Functionality**
 - **Customizable Button Title**: Set any text for your button
 - **Multiple Action Types**: URL links, JavaScript functions, email, phone calls, downloads, forms, modals, and scroll actions
-- **Live Preview**: Real-time preview with floating draggable panel
+- **Live Preview**: Real-time preview with floating draggable panel that updates as you customize
 - **Download HTML**: Get a complete HTML file ready to use
 - **Copy Code**: Copy the generated code to clipboard
 
@@ -16,7 +16,8 @@ A powerful WordPress plugin that allows you to generate customizable buttons tha
 - **Typography**: Font family selection (Arial, Helvetica, Georgia, Times, etc.)
 - **Border Controls**: Style (solid, dashed, dotted, double), width, and radius
 - **Box Shadows**: Subtle, medium, strong, glow, and inset effects
-- **Button Sizes**: Small, medium, and large options
+- **Button Sizes**: Small, medium, large, and custom options
+- **Responsive Sizes**: Responsive small, medium, large, and extra-large options that adapt to screen size
 - **Custom CSS**: Advanced styling with CSS examples guide
 
 ### **Advanced Features**
@@ -52,16 +53,17 @@ A powerful WordPress plugin that allows you to generate customizable buttons tha
    - **Action Type**: Choose from URL, JavaScript, email, phone, download, form, modal, or scroll
    - **Action Value**: Enter the appropriate value based on your action type
 3. Customize appearance:
-   - **Colors**: Use color pickers for background, text, and border
+   - **Colors**: Use color pickers for background, text, and border (click "Apply Color" buttons)
    - **Typography**: Select font family
    - **Borders**: Choose style, width, and radius
    - **Effects**: Add box shadows
-   - **Size**: Select small, medium, or large
+   - **Size**: Select small, medium, large, or responsive sizes (responsive sizes adapt to screen size)
 4. Add tracking (optional):
    - Choose tracking type (Google Analytics, Facebook Pixel, or custom)
    - Set event name for analytics
-5. Click **Generate Button** to see a preview
-6. Download the HTML file or copy the code to use on any website
+5. Watch the **Live Preview** panel update in real-time as you make changes
+6. Click **Generate Button** to see the final preview and code
+7. Download the HTML file or copy the code to use on any website
 
 ## 🎨 Action Types
 
@@ -84,13 +86,14 @@ A powerful WordPress plugin that allows you to generate customizable buttons tha
 ## 🛠️ Customization
 
 ### CSS Examples
-The plugin includes a built-in CSS examples guide with:
+The plugin includes a built-in CSS examples modal (accessible via link in Custom CSS field) with:
 - Hover effects
 - Gradient backgrounds
 - Border styles
 - Text effects
 - Shadow effects
 - Animation examples
+- Copy-paste ready code snippets
 
 ### Custom CSS
 Add your own CSS for advanced styling:
@@ -142,6 +145,17 @@ php tests/test-plugin.php
 - **[Installation Guide](INSTALLATION.md)** - Detailed installation instructions
 - **[Publishing Guide](PUBLISHING-GUIDE.md)** - WordPress.org submission guide
 - **[Testing Guide](TESTING-GUIDE.md)** - Testing documentation
+
+## 📱 Responsive Button Sizes
+
+The plugin includes responsive button size options that automatically adapt to different screen sizes:
+
+- **Responsive Small**: Optimized for mobile devices, expands on larger screens
+- **Responsive Medium**: Balanced size across all devices
+- **Responsive Large**: Prominent on desktop, scales appropriately on mobile
+- **Responsive Extra Large**: Maximum visibility, full-width on mobile devices
+
+These responsive sizes ensure your buttons look great on phones, tablets, and desktops without additional CSS.
 
 ## 🔧 Requirements
 

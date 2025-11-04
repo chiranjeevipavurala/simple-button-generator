@@ -6,7 +6,7 @@
 - [x] Main plugin file with proper headers
 - [x] CSS and JavaScript files
 - [x] README.md with documentation
-- [x] CHANGELOG.md with version history
+- [x] CHANGELOG.md with version history (created)
 - [x] FAQ.md with common questions
 - [x] INSTALLATION.md with setup instructions
 
