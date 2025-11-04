@@ -283,6 +283,12 @@ class StandaloneButtonGeneratorTests {
             $this->assertContains($content, $radius, "Should support border radius: {$radius}");
         }
         
+        // Test responsive size options
+        $responsive_sizes = ['responsive-small', 'responsive-medium', 'responsive-large', 'responsive-extra-large'];
+        foreach ($responsive_sizes as $size) {
+            $this->assertContains($content, $size, "Should support responsive size: {$size}");
+        }
+        
         $this->endTest();
     }
     

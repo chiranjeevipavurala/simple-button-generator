@@ -99,7 +99,8 @@ $tests = [
     'Plugin Test' => __DIR__ . '/test-plugin.php',
     'Analytics Test' => __DIR__ . '/test-analytics.php',
     'Validate Updates' => __DIR__ . '/validate-updates.php',
-    'Verify Tests' => __DIR__ . '/verify-tests.php'
+    'Verify Tests' => __DIR__ . '/verify-tests.php',
+    'Responsive Sizes Test' => __DIR__ . '/test-responsive-sizes.php'
 ];
 
 foreach ($tests as $name => $file) {
@@ -157,4 +158,5 @@ echo "  • php tests/quick-test.php\n";
 echo "  • php tests/simple-test.php\n";
 echo "  • php tests/standalone-tests.php\n";
 echo "  • php tests/verify-tests.php\n";
+echo "  • php tests/test-responsive-sizes.php\n";
 ?>

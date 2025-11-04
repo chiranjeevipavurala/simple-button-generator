@@ -206,6 +206,10 @@ class SimpleButtonGenerator {
                                     <option value="small">Small</option>
                                     <option value="medium" selected>Medium (Default)</option>
                                     <option value="large">Large</option>
+                                    <option value="responsive-small">📱 Responsive Small</option>
+                                    <option value="responsive-medium">📱 Responsive Medium</option>
+                                    <option value="responsive-large">📱 Responsive Large</option>
+                                    <option value="responsive-extra-large">📱 Responsive Extra Large</option>
                                     <option value="custom">Custom</option>
                                 </select>
                                 <p class="description">Choose a predefined size or select custom for manual CSS</p>
@@ -737,6 +741,94 @@ class SimpleButtonGenerator {
 .simple-button {
     padding: 16px 32px;
     font-size: 18px;
+}';
+            case 'responsive-small':
+                return '
+.simple-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-height: 44px;
+}
+
+@media (max-width: 768px) {
+    .simple-button {
+        padding: 12px 24px;
+        font-size: 16px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .simple-button {
+        padding: 11px 22px;
+        font-size: 15px;
+    }
+}';
+            case 'responsive-medium':
+                return '
+.simple-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    min-height: 44px;
+}
+
+@media (max-width: 768px) {
+    .simple-button {
+        padding: 16px 32px;
+        font-size: 18px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .simple-button {
+        padding: 14px 28px;
+        font-size: 17px;
+    }
+}';
+            case 'responsive-large':
+                return '
+.simple-button {
+    padding: 16px 32px;
+    font-size: 18px;
+    min-height: 48px;
+}
+
+@media (max-width: 768px) {
+    .simple-button {
+        padding: 20px 40px;
+        font-size: 20px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .simple-button {
+        padding: 18px 36px;
+        font-size: 19px;
+    }
+}';
+            case 'responsive-extra-large':
+                return '
+.simple-button {
+    padding: 20px 40px;
+    font-size: 20px;
+    min-height: 52px;
+}
+
+@media (max-width: 768px) {
+    .simple-button {
+        padding: 24px 48px;
+        font-size: 22px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .simple-button {
+        padding: 22px 44px;
+        font-size: 21px;
+    }
 }';
             case 'custom':
                 return '';

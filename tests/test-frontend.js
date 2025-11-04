@@ -72,6 +72,10 @@ class SimpleButtonGeneratorFrontendTests {
         this.testElementExists('#border-width', 'Border width dropdown should exist');
         this.testDropdownOptions('#border-width', ['1px', '2px', '3px', '4px', '5px'], 'Border width options');
         
+        // Test button size dropdown
+        this.testElementExists('#button-size', 'Button size dropdown should exist');
+        this.testDropdownOptions('#button-size', ['small', 'medium', 'large', 'responsive-small', 'responsive-medium', 'responsive-large', 'responsive-extra-large', 'custom'], 'Button size options');
+        
         // Test border radius radio buttons
         this.testElementExists('input[name="border_radius"]', 'Border radius radio buttons should exist');
         this.testRadioButtons('input[name="border_radius"]', ['0', '4', '8', '20'], 'Border radius options');
